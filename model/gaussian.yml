@@ -1,0 +1,10 @@
+# the number of parameters (same number as entries in the lists below)
+ndim: 2
+
+# the names of each parameter (must match the .stan file names!)
+names: ["mu", "sigma"]
+
+# the labels which will be renderd on plots
+# supports latex when using $(...)$
+# to escape blackslashes write, e.g.: \\alpha instead of \alpha
+labels: ["$\\mu$", "$\\sigma$"]

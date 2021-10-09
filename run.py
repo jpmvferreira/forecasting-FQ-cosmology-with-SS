@@ -3,30 +3,34 @@
 # imports
 from getdist import plots, MCSamples
 import matplotlib.pyplot as plt
-from random import gauss, seed
 import numpy as np
 import getdist
+import pandas
 import stan
+import yaml
 
 # main
 def main():
-    # define relevant parameters
-    ndim = 2
+    # get relevant parameters from .yml file
+    with open("model/gaussian.yml", "r") as file:
+        d = yaml.full_load(file)
+        ndim = d["ndim"]
+        names = d["names"]
+        labels = d["labels"]
+
+    # get model from the .stan file
+    with open("model/gaussian.stan", "r") as file:
+        program = file.read()
+
+    # user defined parameters
     chains = 1
-    warmup = 250
-    samples = 500
-    names = ["mu", "sigma"]
-    labels = ["$\mu$", "$\sigma$"]
+    warmup = 500
+    samples = 1000
 
-    # get model
-    file = open("model/gaussian.stan", "r")
-    program = file.read()
-    file.close()
-
-    # get data
-    n = 100
-    seed(1)
-    data = {"n": n, "y": [gauss(2, 3) for i in range(0, n)]}
+    # get data from .csv file
+    csv = pandas.read_csv("data/gaussian.csv", comment="#")
+    values = list(csv["value"])
+    data = {"n": len(values), "y": values}
 
     # get initial conditions
     # (...)
@@ -42,7 +46,7 @@ def main():
         ax.plot(fit[names[i]][0], "k", alpha=0.75)
         ax.set_xlim(0, samples)
         ax.set_ylabel(labels[i])
-        ax.axvline(x=warmup, linestyle="--", color="red")
+        #ax.axvline(x=warmup, linestyle="--", color="red")
         ax.yaxis.set_label_coords(-0.1, 0.5)
         ax.grid()
     axes[-1].set_xlabel("step number")

@@ -2,6 +2,7 @@
 
 # imports
 from getdist import plots, MCSamples
+from random import gauss, uniform
 import matplotlib.pyplot as plt
 import numpy as np
 import getdist
@@ -17,14 +18,15 @@ def main():
         ndim = d["ndim"]
         names = d["names"]
         labels = d["labels"]
+        initial = d["initial"]
 
     # get model from the .stan file
     with open("model/gaussian.stan", "r") as file:
         program = file.read()
 
     # user defined parameters
-    chains = 1
-    warmup = 500
+    chains = 2
+    warmup = 20
     samples = 1000
 
     # get data from .csv file
@@ -33,11 +35,16 @@ def main():
     data = {"n": len(values), "y": values}
 
     # get initial conditions
-    # (...)
+    init = []
+    for i in range(0, chains):
+        init.append({})
+        for name in names:
+            init[i][name] = eval(initial[name])
 
+    print(init)
     # run the sampler
     posterior = stan.build(program, data=data)
-    fit = posterior.sample(num_chains=chains, num_samples=samples, num_warmup=warmup)
+    fit = posterior.sample(num_chains=chains, num_samples=samples, num_warmup=warmup, init=init)
 
     # plot the time series for each parameter
     fig, axes = plt.subplots(ndim, figsize=(10, 7), sharex=True)

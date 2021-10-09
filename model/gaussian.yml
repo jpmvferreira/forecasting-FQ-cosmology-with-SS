@@ -1,10 +1,22 @@
-# the number of parameters (same number as entries in the lists below)
+# the number of parameters.
+# must be the same as the number of entries in the lists below!
 ndim: 2
 
-# the names of each parameter (must match the .stan file names!)
+# the names for each parameter.
+# must match the names found in the .stan model file!
 names: ["mu", "sigma"]
 
-# the labels which will be renderd on plots
-# supports latex when using $(...)$
-# to escape blackslashes write, e.g.: \\alpha instead of \alpha
+# the labels which will be renderd on plots.
+# supports latex when using $(...)$, however you have to escape blackslashes
+# e.g.: write \\alpha instead of \alpha for the character α
 labels: ["$\\mu$", "$\\sigma$"]
+
+# initial condition for each parameter, for each chain.
+# this will run an arbitrary Python command to generate the initial conditions.
+# however the most relevant options are:
+# - gauss(mu, sigma)
+# - uniform(a, b)
+# - float(a)
+initial:
+  mu: float(2)
+  sigma: float(3)

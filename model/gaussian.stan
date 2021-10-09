@@ -10,9 +10,9 @@ parameters {
   real<lower=0> sigma;
 }
 
-// model and priors considered
+// likelihood and priors considered
 model {
-  // model
+  // likelihood
   for (i in 1:n)
     y[i] ~ normal(mu, sigma);
 

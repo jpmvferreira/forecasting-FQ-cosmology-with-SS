@@ -11,12 +11,13 @@ names: ["mu", "sigma"]
 # e.g.: write \\alpha instead of \alpha for the character α
 labels: ["$\\mu$", "$\\sigma$"]
 
-# initial condition for each parameter, for each chain.
-# this will run an arbitrary Python command to generate the initial conditions.
+# initial condition for each parameter.
+# these values are the same for each chain.
+# this will run an arbitrary Python command to generate the initial conditions (so be careful!).
 # however the most relevant options are:
 # - gauss(mu, sigma)
 # - uniform(a, b)
 # - float(a)
 initial:
-  mu: float(2)
-  sigma: float(3)
+  mu: gauss(0, 100)
+  sigma: float(30)

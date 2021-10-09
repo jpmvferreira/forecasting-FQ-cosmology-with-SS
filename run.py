@@ -11,6 +11,7 @@ import pandas
 import stan
 import yaml
 
+
 # main
 def main(model, data, samples, output, chains, warmup):
     # get model from the .stan file
@@ -25,6 +26,7 @@ def main(model, data, samples, output, chains, warmup):
         names = d["names"]
         labels = d["labels"]
         initial = d["initial"]
+        markers = d["markers"]
 
     # get initial conditions obtained from the previous .yml file
     init = []
@@ -50,22 +52,22 @@ def main(model, data, samples, output, chains, warmup):
         for j in range(0, chains):
             ax.plot(steps, fit[names[i]][0][j::chains], alpha=0.75)
         ax.set_xlim(0, samples+warmup)
-        ax.set_ylabel(labels[i])
+        ax.set_ylabel("$" + labels[i] + "$")
         ax.axvline(x=warmup, linestyle="--", color="red")
         ax.yaxis.set_label_coords(-0.1, 0.5)
         ax.grid()
     axes[-1].set_xlabel("step number")
     plt.show()
 
-    # show the corner plot
-    print(len(fit["sigma"][0]))
+    # show the corner plot (fix me!)
     samples = np.column_stack((fit["mu"][0][chains*warmup:], fit["sigma"][0][chains*warmup:]))
-    mcsamples = MCSamples(samples=samples, names = ["mu", "sigma"], labels = ["\mu", "\sigma"])
+    mcsamples = MCSamples(samples=samples, names = names, labels = labels)
     g = plots.get_subplot_plotter()
-    g.triangle_plot(mcsamples, filled=True, markers={"mu": 2, "sigma": 3})
+    g.triangle_plot(mcsamples, filled=True, markers=markers)
     plt.show()
 
     return
+
 
 # run if called
 if __name__ == "__main__":

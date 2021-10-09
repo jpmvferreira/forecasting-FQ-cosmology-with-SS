@@ -7,17 +7,24 @@ ndim: 2
 names: ["mu", "sigma"]
 
 # the labels which will be renderd on plots.
-# supports latex when using $(...)$, however you have to escape blackslashes
+# supports latex, however, you have to escape blackslashes
 # e.g.: write \\alpha instead of \alpha for the character α
-labels: ["$\\mu$", "$\\sigma$"]
+labels: ["\\mu", "\\sigma"]
 
 # initial condition for each parameter.
 # these values are the same for each chain.
 # this will run an arbitrary Python command to generate the initial conditions (so be careful!).
-# however the most relevant options are:
+# the most relevant initial conditions are:
 # - gauss(mu, sigma)
 # - uniform(a, b)
 # - float(a)
 initial:
   mu: gauss(0, 100)
   sigma: float(30)
+
+# markers to show on the corner plot.
+# these can be used to represent the true or expected values.
+# leave empty to have no markers.
+markers:
+  mu: 2
+  sigma: 3

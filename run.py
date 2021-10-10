@@ -5,6 +5,7 @@ from getdist import plots, MCSamples
 from random import gauss, uniform
 import matplotlib.pyplot as plt
 import numpy as np
+import arviz as az
 import argparse
 import getdist
 import pandas
@@ -35,14 +36,22 @@ def main(model, data, samples, output, chains, warmup):
         for name in names:
             init[i][name] = eval(initial[name])
 
-    # get data from the .csv file
+    # get data from the .csv file (todo: arbitrary csv file)
     csv = pandas.read_csv(data, comment="#")
     values = list(csv["value"])
     data = {"n": len(values), "y": values}
+    #redshifts = list(csv["z"])
+    #distances = list(csv["dL"])
+    #errors = list(csv["sigma"])
+    #data = {"n": len(redshifts), "redshifts": redshifts, "distances": distances, "errors": errors}
 
     # run the sampler
     posterior = stan.build(program, data=data)
     fit = posterior.sample(num_chains=chains, num_samples=samples, num_warmup=warmup, init=init, save_warmup=True)
+
+    # print summary of the sample (todo)
+    #summary = az.summary(fit)
+    #print(summary)
 
     # plot the time series
     fig, axes = plt.subplots(ndim, figsize=(10, 7), sharex=True)

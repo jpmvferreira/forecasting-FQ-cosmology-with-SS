@@ -19,7 +19,7 @@ labels: ["\\mu", "\\sigma"]
 # - uniform(a, b)
 # - float(a)
 initial:
-  mu: gauss(0, 100)
+  mu: gauss(0, 10)
   sigma: float(30)
 
 # markers to show on the corner plot.

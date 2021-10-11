@@ -110,7 +110,7 @@ def main(model, data, yml, initial, markers, samples, output, warmup, chains):
     plt.show()
 
     # plot the corner plot (to-do: generalizar!)
-    samples = np.column_stack((fit["h"][0][chains*warmup:], fit["Omega_m"][0][chains*warmup:]))
+    samples = np.column_stack((fit["mu"][0][chains*warmup:], fit["sigma"][0][chains*warmup:]))
     mcsamples = MCSamples(samples=samples, names = names, labels = labels)
     g = plots.get_subplot_plotter()
     g.triangle_plot(mcsamples, filled=True, markers=markers)
@@ -131,7 +131,7 @@ if __name__ == "__main__":
     parser._action_groups.pop()
     required = parser.add_argument_group("Required arguments")
     overwrite = parser.add_argument_group("Overwrite configuration file")
-    output = parser.add_argument_group("Output the results")
+    output = parser.add_argument_group("Output arguments")
     help = parser.add_argument_group("Help dialog")
 
     # required arguments

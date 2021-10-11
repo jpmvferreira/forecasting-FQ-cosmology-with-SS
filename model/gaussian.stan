@@ -1,7 +1,7 @@
 // data provided to Stan
 data {
-  int n;      // number of observations
-  real y[n];  // array of observations
+  int N;      // number of observations
+  real y[N];  // array of observations
 }
 
 // model parameters
@@ -13,7 +13,7 @@ parameters {
 // likelihood and priors considered
 model {
   // likelihood
-  for (i in 1:n)
+  for (i in 1:N)
     y[i] ~ normal(mu, sigma);
 
   // priors

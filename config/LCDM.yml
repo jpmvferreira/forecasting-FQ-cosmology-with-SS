@@ -25,15 +25,15 @@ markers:
   h: 0.7
   Omega_m: 0.284
 
-# The number of steps to sample the posterior distribution, after the warmup.
+# Number of steps to sample the posterior distribution, after the warmup.
 samples: 1000
 
-# The number of steps to warmup each chain.
+# Number of steps to warmup each chain.
 # This samples will be discarded.
 warmup: 1000
 
-# The number of chains to run in parallel.
+# Number of chains to run.
+# Will run in parallel, provided that there are enough threads to do so.
 # Leave empty for a single chain.
-# Setting a higher number of chains than the number of available threads will lead to sequential execution.
-# Note: each chain will do a total number of steps = warmup + samples
+# Keep in mind that each chain will do a total number of steps = warmup + samples.
 chains: 4

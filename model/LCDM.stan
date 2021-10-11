@@ -15,7 +15,7 @@ functions{
 // declare variables that will hold the data required to the model
 // must match the columns in the input .csv file!
 data {
-  int N;
+  int N;  // number of observations must always be N
   real redshift[N];
   real luminosity_distance[N];
   real error[N];

@@ -1,5 +1,5 @@
-# MBHB-1.csv
-# Generated with cosmocatalog
+# /data/MBHB-1.csv
+# generated with cosmocatalog: LISA, 15 events, No Delay population
 
 # units: none, Gpc, Gpc
 redshift,luminosity_distance,error

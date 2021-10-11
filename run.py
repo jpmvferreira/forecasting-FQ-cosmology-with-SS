@@ -93,7 +93,7 @@ def main(model, data, yml, initial, markers, samples, output, warmup, chains):
     #summary = az.summary(fit)
     #print(summary)
 
-    # plot the time series (to-do: adicionar markers horizontais com mesmo valor dos do corner plot)
+    # plot the time series
     fig, axes = plt.subplots(len(names), figsize=(10, 7), sharex=True)
     steps = np.arange(samples+warmup)
     for i in range(len(names)):
@@ -102,7 +102,8 @@ def main(model, data, yml, initial, markers, samples, output, warmup, chains):
             ax.plot(steps, fit[names[i]][0][j::chains], alpha=0.75)
         ax.set_xlim(0, samples+warmup)
         ax.set_ylabel("$" + labels[i] + "$")
-        ax.axvline(x=warmup, linestyle="--", color="red")
+        ax.axvline(x=warmup, linestyle="--", color="black", alpha=0.5)
+        ax.axhline(y=markers[names[i]], linestyle="--", color="black", alpha=0.5)
         ax.yaxis.set_label_coords(-0.1, 0.5)
         ax.grid()
     axes[-1].set_xlabel("step number")

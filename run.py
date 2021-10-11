@@ -13,14 +13,20 @@ import stan
 import yaml
 
 
-def load(yml, initial, markers, samples, warmup, chains):
+def load(yml, names, labels, initial, markers, samples, warmup, chains):
     # get raw configuration data and overwrite if provided by CLI
     with open(yml, "r") as file:
         yml_loaded = yaml.full_load(file)
 
-        names = yml_loaded["names"]
+        if names:
+            names = eval(names)
+        else:
+            names = yml_loaded["names"]
 
-        labels = yml_loaded["labels"]
+        if labels:
+            labels = eval(labels)
+        else:
+            labels = yml_loaded["labels"]
 
         if initial:
             initial = eval(initial)
@@ -70,13 +76,13 @@ def load(yml, initial, markers, samples, warmup, chains):
 
 
 # main
-def main(model, data, yml, initial, markers, samples, output, warmup, chains):
+def main(model, data, yml, names, labels, initial, markers, samples, output, warmup, chains):
     # get the statistical model from the provided .stan file
     with open(model, "r") as file:
         program = file.read()
 
     # get the configutation from the provided .yml file, overwriting if configuration is provided via CLI
-    names, labels, initial, markers, samples, warmup, chains = load(yml, initial, markers, samples, warmup, chains)
+    names, labels, initial, markers, samples, warmup, chains = load(yml, names, labels, initial, markers, samples, warmup, chains)
 
     # get the data from the provided .csv file
     columns = pandas.read_csv(data, comment="#", nrows=0).columns.tolist()
@@ -110,7 +116,7 @@ def main(model, data, yml, initial, markers, samples, output, warmup, chains):
     plt.show()
 
     # plot the corner plot (to-do: generalizar!)
-    samples = np.column_stack((fit["mu"][0][chains*warmup:], fit["sigma"][0][chains*warmup:]))
+    samples = np.column_stack((fit["h"][0][chains*warmup:], fit["Omega_m"][0][chains*warmup:]))
     mcsamples = MCSamples(samples=samples, names = names, labels = labels)
     g = plots.get_subplot_plotter()
     g.triangle_plot(mcsamples, filled=True, markers=markers)
@@ -130,21 +136,23 @@ if __name__ == "__main__":
     # create argparser subgroups
     parser._action_groups.pop()
     required = parser.add_argument_group("Required arguments")
-    overwrite = parser.add_argument_group("Overwrite configuration file")
+    config = parser.add_argument_group("Configuration options")
     output = parser.add_argument_group("Output arguments")
     help = parser.add_argument_group("Help dialog")
 
     # required arguments
     required.add_argument("-m", "--model", type=str, help="Input .stan statistical model.", required=True)
     required.add_argument("-d", "--data", type=str, help="Input data from one (or more) .csv file(s).", required=True)
-    required.add_argument("-y", "--yml", type=str, help="Input .yml configutation file.", required=True)
 
-    # overwrite configuration file
-    overwrite.add_argument("-i", "--initial", type=str, help="String with a Python style dictionary with the initial condition for each parameter, for each chain (NOT WORKING).") # to-do: problema do eval
-    overwrite.add_argument("--markers", type=str, help="String with a Python style dictionary with the line markers to show rendered in the plots.")
-    overwrite.add_argument("-s", "--samples", type=int, help="Number of steps to sample the posterior distribution, after the warmup.")
-    overwrite.add_argument("-w", "--warmup", type=int, help="Number of steps to warmup each chain.")
-    overwrite.add_argument("-c", "--chains", type=int, help="Number of chains to run. Will run in parallel, provided that there are enough threads to do so.")
+    # configuration options
+    config.add_argument("-y", "--yml", type=str, help="Input .yml configuration file. Configures the program behavior in a user friendly syntax. All of the other flags in this section will add to or overwrite the contents writen in the specified file.")
+    config.add_argument("--names", type=str, help="String with a Python like list with the names for each parameter. Must match the names defined in the .stan model file!") # to-do: implementar
+    config.add_argument("--labels", type=str, help="A string with a Python like list with the labels for each parameter.") # to-do: implementar
+    config.add_argument("-i", "--initial", type=str, help="String with a Python style dictionary with the initial condition for each parameter, for each chain.") # to-do: problema do eval
+    config.add_argument("--markers", type=str, help="String with a Python style dictionary with the line markers to show rendered in the plots.")
+    config.add_argument("-s", "--samples", type=int, help="Number of steps to sample the posterior distribution, after the warmup.")
+    config.add_argument("-w", "--warmup", type=int, help="Number of steps to warmup each chain.")
+    config.add_argument("-c", "--chains", type=int, help="Number of chains to run. Will run in parallel, provided that there are enough threads to do so.")
 
     # output the results
     output.add_argument("-o", "--output", type=str, help="Output folder to save the results. Warning: will overwrite existing files.")
@@ -162,6 +170,8 @@ if __name__ == "__main__":
     model = args.model
     data = args.data
     yml = args.yml
+    names = args.names
+    labels = args.labels
     initial = args.initial
     markers = args.markers
     samples = args.samples
@@ -179,4 +189,4 @@ if __name__ == "__main__":
         raise Exception("Toggling -n, --noshow requires to provide an output folder, otherwise output will not be shown nor saved.")
 
     # call main with the provided arguments
-    main(model, data, yml, initial, markers, samples, output, warmup, chains)
+    main(model, data, yml, names, labels, initial, markers, samples, output, warmup, chains)

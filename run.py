@@ -13,50 +13,92 @@ import stan
 import yaml
 
 
-# main
-def main(model, data, samples, output, chains, warmup):
-    # get model from the .stan file
-    with open(model, "r") as file:
-        program = file.read()
-
-    # get relevant parameters from .yml file with the same name
-    yml = model.replace(".stan", ".yml")
+def load(yml, initial, markers, samples, warmup, chains):
+    # get raw configuration data and overwrite if provided by CLI
     with open(yml, "r") as file:
-        d = yaml.full_load(file)
-        ndim = d["ndim"]
-        names = d["names"]
-        labels = d["labels"]
-        initial = d["initial"]
-        markers = d["markers"]
+        yml_loaded = yaml.full_load(file)
 
-    # get initial conditions obtained from the previous .yml file
+        names = yml_loaded["names"]
+
+        labels = yml_loaded["labels"]
+
+        if initial:
+            initial = eval(initial)
+        else:
+            initial = yml_loaded["initial"]
+
+        if markers:
+            markers = eval(markers)
+        else:
+            markers = yml_loaded["markers"]
+
+        if not samples:
+            samples = yml_loaded["samples"]
+
+        if not warmup:
+            warmup = yml_loaded["warmup"]
+
+        if not chains:
+            chains = yml_loaded["chains"]
+
+    # run checks on sizes
+    if not ( len(names) == len(labels) == len(initial) ):
+        raise Exception(f"number of dimensions missmatch: len(names) = {len(names)}, len(labels) = {len(labels)}, len(initial) = {len(initial)}")
+
+    # turn initial conditions into a dictionary
     init = []
     for i in range(0, chains):
         init.append({})
         for name in names:
             init[i][name] = eval(initial[name])
 
-    # get data from the .csv file (todo: arbitrary csv file)
+    # check if everything is provided
+    if not names:
+        raise Exception("Parameters names must be provided either in CLI or configuration file")
+    if not labels:
+        labels = names
+    if not initial:
+        raise Exception("Initial confitions must be provided either in CLI or configuration file")
+    if not samples:
+        raise Exception("The number of steps to sample the posterior distribution, after the warmup, must be provided either in CLI or configuration file")
+    if not warmup:
+        raise Exception("The number of steps to warmup each chain must be provided either in CLI or configuration file")
+    if not chains:
+        chains = 1
+
+    return names, labels, init, markers, samples, warmup, chains
+
+
+# main
+def main(model, data, yml, initial, markers, samples, output, warmup, chains):
+    # get the statistical model from the provided .stan file
+    with open(model, "r") as file:
+        program = file.read()
+
+    # get the configutation from the provided .yml file, overwriting if configuration is provided via CLI
+    names, labels, initial, markers, samples, warmup, chains = load(yml, initial, markers, samples, warmup, chains)
+
+    # get the data from the provided .csv file (to-do: generalizar!)
     csv = pandas.read_csv(data, comment="#")
-    values = list(csv["value"])
-    data = {"n": len(values), "y": values}
-    #redshifts = list(csv["z"])
-    #distances = list(csv["dL"])
-    #errors = list(csv["sigma"])
-    #data = {"n": len(redshifts), "redshifts": redshifts, "distances": distances, "errors": errors}
+    #values = np.array(csv["value"])
+    #data = {"n": len(values), "y": values}
+    redshift = np.array(csv["redshift"])
+    luminosity_distance = np.array(csv["luminosity_distance"])
+    error = np.array(csv["error"])
+    data = {"n": len(redshift), "redshift": redshift, "luminosity_distance": luminosity_distance, "error": error}
 
     # run the sampler
     posterior = stan.build(program, data=data)
-    fit = posterior.sample(num_chains=chains, num_samples=samples, num_warmup=warmup, init=init, save_warmup=True)
+    fit = posterior.sample(num_chains=chains, num_samples=samples, num_warmup=warmup, init=initial, save_warmup=True)
 
-    # print summary of the sample (todo)
+    # print summary of the sample (to-do: meter percetivel e a verificar convergencia)
     #summary = az.summary(fit)
     #print(summary)
 
-    # plot the time series
-    fig, axes = plt.subplots(ndim, figsize=(10, 7), sharex=True)
+    # plot the time series (to-do: adicionar markers horizontais com mesmo valor dos do corner plot)
+    fig, axes = plt.subplots(len(names), figsize=(10, 7), sharex=True)
     steps = np.arange(samples+warmup)
-    for i in range(ndim):
+    for i in range(len(names)):
         ax = axes[i]
         for j in range(0, chains):
             ax.plot(steps, fit[names[i]][0][j::chains], alpha=0.75)
@@ -68,8 +110,8 @@ def main(model, data, samples, output, chains, warmup):
     axes[-1].set_xlabel("step number")
     plt.show()
 
-    # show the corner plot (fix me!)
-    samples = np.column_stack((fit["mu"][0][chains*warmup:], fit["sigma"][0][chains*warmup:]))
+    # plot the corner plot (to-do: generalizar!)
+    samples = np.column_stack((fit["h"][0][chains*warmup:], fit["Omega_m"][0][chains*warmup:]))
     mcsamples = MCSamples(samples=samples, names = names, labels = labels)
     g = plots.get_subplot_plotter()
     g.triangle_plot(mcsamples, filled=True, markers=markers)
@@ -81,23 +123,47 @@ def main(model, data, samples, output, chains, warmup):
 # run if called
 if __name__ == "__main__":
     # create argparser
-    parser = argparse.ArgumentParser(description = "A Python command line interface (CLI) that aims to simply the usage of MCMC methods on different models, with different datasets.")
+    parser = argparse.ArgumentParser(description = "A Python command line interface (CLI) that wraps the Stan programming language to simply Bayesian statistical inference with MCMC sampling.")
 
-    # argparser arguments
-    parser.add_argument("-m", "--model", type=str, help="The input .stan model file. Required.", required=True)
-    parser.add_argument("-d", "--data", type=str, help="Input data from one (or more) .csv file(s). Required.", required=True)
-    parser.add_argument("-s", "--samples", type=int, help="The number of steps to produce in each chain. Required.", required=True)
-    parser.add_argument("-o", "--output", type=str, help="Output folder. Required if -n or --noshow flag is set. Warning: will overwrite existing files.", default="")
-    parser.add_argument("-c", "--chains", type=int, help="The number of chains to run in parallel. Default is 1.", default=1)
-    parser.add_argument("-w", "--warmup", type=int, help="The number of steps to warmup each chain. Default is 20.", default=20)
+    # disable default help
+    parser = argparse.ArgumentParser(add_help=False)
+
+    # create argparser subgroups
+    parser._action_groups.pop()
+    required = parser.add_argument_group("Required arguments")
+    config = parser.add_argument_group("Configuration file")
+    overwrite = parser.add_argument_group("Overwrite configuration file")
+    help = parser.add_argument_group("Help dialog")
+
+    # required arguments
+    required.add_argument("-m", "--model", type=str, help="The input .stan statistical model.", required=True)
+    required.add_argument("-d", "--data", type=str, help="Input data from one (or more) .csv file(s).", required=True)
+
+    # configuration file
+    config.add_argument("-y", "--yml", type=str, help="The .yml configutation file.")
+
+    # overwrite configuration file
+    overwrite.add_argument("-i", "--initial", type=str, help="A Python like dictionary with the initial condition for each parameter, for each chain (NOT WORKING).") # to-do: problema do eval
+    overwrite.add_argument("--markers", type=str, help="A Python like dictionary with the line markers to show rendered in the plots.")
+    overwrite.add_argument("-s", "--samples", type=int, help="The number of steps to sample the posterior distribution, after the warmup.")
+    overwrite.add_argument("-w", "--warmup", type=int, help="The number of steps to warmup each chain.")
+    overwrite.add_argument("-c", "--chains", type=int, help="The number of chains to run in parallel.")
+    overwrite.add_argument("-o", "--output", type=str, help="Output folder. Warning: will overwrite existing files.", default="")
+
+    # add help to its own subsection
+    help.add_argument("-h", "--help", action="help", default=argparse.SUPPRESS, help="Show this help message and exit")
 
     # get arguments
     args = parser.parse_args()
     model = args.model
     data = args.data
+    yml = args.yml
+    initial = args.initial
+    markers = args.markers
     samples = args.samples
-    output = args.output
-    chains = args.chains
     warmup = args.warmup
+    chains = args.chains
+    output = args.output
 
-    main(model, data, samples, output, chains, warmup)
+    # call main with the provided arguments
+    main(model, data, yml, initial, markers, samples, output, warmup, chains)

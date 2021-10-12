@@ -81,18 +81,24 @@ def main(model, data, yml, names, labels, initial, markers, samples, output, war
     with open(model, "r") as file:
         program = file.read()
 
-    # get the configutation from the provided .yml file, overwriting if configuration is provided via CLI
+    # get the configutation from the provided .yml file and/or CLI
     names, labels, initial, markers, samples, warmup, chains = load(yml, names, labels, initial, markers, samples, warmup, chains)
 
-    # get the data from the provided .csv file
-    columns = pandas.read_csv(data, comment="#", nrows=0).columns.tolist()
-    csv = pandas.read_csv(data, comment="#")
-    data = {"N": len(csv[columns[0]])}
+    # get the data from the provided .csv file(s) (to-do: generalizar e pensar como deve fazer - nomes ou ordem)
+    dic = {}
+    columns = pandas.read_csv(data[0], comment="#", nrows=0).columns.tolist()
+    csv = pandas.read_csv(data[0], comment="#")
+    dic["N1"] = len(csv[columns[0]])
     for column in columns:
-        data[column] = np.array(csv[column])
+        dic[column] = np.array(csv[column])
+    columns = pandas.read_csv(data[1], comment="#", nrows=0).columns.tolist()
+    csv = pandas.read_csv(data[1], comment="#")
+    dic["N2"] = len(csv[columns[0]])
+    for column in columns:
+        dic[column] = np.array(csv[column])
 
     # run the sampler
-    posterior = stan.build(program, data=data)
+    posterior = stan.build(program, data=dic)
     fit = posterior.sample(num_chains=chains, num_samples=samples, num_warmup=warmup, init=initial, save_warmup=True)
 
     # print summary of the sample (to-do: meter percetivel e a verificar convergencia)
@@ -115,8 +121,8 @@ def main(model, data, yml, names, labels, initial, markers, samples, output, war
     axes[-1].set_xlabel("step number")
     plt.show()
 
-    # plot the corner plot (to-do: generalizar!)
-    samples = np.column_stack((fit["h"][0][chains*warmup:], fit["Omega_m"][0][chains*warmup:]))
+    # plot the corner plot (to-do: generalizar!) (como? um for a fazer stack com os varios names?)
+    samples = np.column_stack((fit["h"][0][chains*warmup:], fit["Omega_m"][0][chains*warmup:], fit["M"][0][chains*warmup:]))
     mcsamples = MCSamples(samples=samples, names = names, labels = labels)
     g = plots.get_subplot_plotter()
     g.triangle_plot(mcsamples, filled=True, markers=markers)
@@ -142,19 +148,19 @@ if __name__ == "__main__":
 
     # required arguments
     required.add_argument("-m", "--model", type=str, help="Input .stan statistical model.", required=True)
-    required.add_argument("-d", "--data", type=str, help="Input data from one (or more) .csv file(s).", required=True)
+    required.add_argument("-d", "--data", nargs="*", help="Input data from one (or more) .csv file(s).", required=True)
 
     # configuration options
-    config.add_argument("-y", "--yml", type=str, help="Input .yml configuration file. Configures the program behavior in a user friendly syntax. All of the other flags in this section will add to or overwrite the contents writen in the specified file.")
-    config.add_argument("--names", type=str, help="String with a Python like list with the names for each parameter. Must match the names defined in the .stan model file!") # to-do: implementar
-    config.add_argument("--labels", type=str, help="A string with a Python like list with the labels for each parameter.") # to-do: implementar
+    config.add_argument("-y", "--yml", type=str, help="Input .yml configuration file. Configures the program behavior in a file with a user friendly syntax. All of the other flags in this section will either add to or overwrite the contents writen in this file.")
+    config.add_argument("--names", type=str, help="String with a Python like list with the names for each parameter. Must match the names defined in the .stan model file!")
+    config.add_argument("--labels", type=str, help="A string with a Python like list with the labels for each parameter.")
     config.add_argument("-i", "--initial", type=str, help="String with a Python style dictionary with the initial condition for each parameter, for each chain.") # to-do: problema do eval
     config.add_argument("--markers", type=str, help="String with a Python style dictionary with the line markers to show rendered in the plots.")
     config.add_argument("-s", "--samples", type=int, help="Number of steps to sample the posterior distribution, after the warmup.")
     config.add_argument("-w", "--warmup", type=int, help="Number of steps to warmup each chain.")
     config.add_argument("-c", "--chains", type=int, help="Number of chains to run. Will run in parallel, provided that there are enough threads to do so.")
 
-    # output the results
+    # output the results (to-do: implementar)
     output.add_argument("-o", "--output", type=str, help="Output folder to save the results. Warning: will overwrite existing files.")
     output.add_argument("-sc", "--savechain", action="store_true", help="Saves the chain to a .hd5 file in the output folder.")
     output.add_argument("-g", "--gzip", type=int, help="Compress the chain with GZIP. Optionally specify the compression level with an integer from 0 (fast) to 9 (slow). Default is 4.")

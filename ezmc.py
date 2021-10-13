@@ -10,6 +10,7 @@ import argparse
 import getdist
 import pandas
 import stan
+import h5py
 import yaml
 import os
 
@@ -77,7 +78,7 @@ def load(yml, names, labels, initial, markers, samples, warmup, chains):
 
 
 # main
-def main(model, data, yml, names, labels, initial, markers, samples, warmup, chains, output, savechain, gzip, lsf, thin, noshow):
+def main(model, data, yml, names, labels, initial, markers, samples, warmup, chains, output, savesamples, savewarmup, savechain, gzip, lzf, noshow):
     # prepare the output folder
     if output != None and output[-1] != "/":
         output += "/"
@@ -125,11 +126,6 @@ def main(model, data, yml, names, labels, initial, markers, samples, warmup, cha
     #summary = az.summary(fit)
     #print(summary)
 
-    # save the chain
-    if savechain:
-        dummie = 1
-        # to-do (hdf5, gzip, lsf, thin)
-
     # plot the time series
     fig, axes = plt.subplots(len(names), figsize=(10, 7), sharex=True)
     steps = np.arange(samples+warmup)
@@ -150,10 +146,12 @@ def main(model, data, yml, names, labels, initial, markers, samples, warmup, cha
         plt.show()
     plt.close()
 
-    # plot the corner plot
+    # get the samples without warmup in a single numpy array
     samples = fit[names[0]][0][chains*warmup:]
     for i in range(1, len(names)):
         samples = np.column_stack((samples, fit[names[i]][0][chains*warmup:]))
+
+    # plot the corner plot
     mcsamples = MCSamples(samples=samples, names=names, labels=labels)
     g = plots.get_subplot_plotter()
     g.triangle_plot(mcsamples, filled=True, markers=markers)
@@ -172,6 +170,18 @@ def main(model, data, yml, names, labels, initial, markers, samples, warmup, cha
     if not noshow:
         print(mcsamples.getTable(limit=1).tableTex())
         print(mcsamples.getTable().tableTex())
+
+    # save the chain
+    if savechain:
+        # to-do: savewarmup, savechain
+        # isto da bue combinacoes possiveis pahhhhh
+        with h5py.File(output + "chain.h5", "w") as file:
+            if gzip:
+                dataset = file.create_dataset("chain", data=samples, compression="gzip", compression_opts=gzip, dtype="f")
+            elif lzf:
+                dataset = file.create_dataset("chain", data=samples, compression="lzf", dtype="f")
+            else:
+                dataset = file.create_dataset("chain", data=samples, dtype="f")
 
     return
 
@@ -207,10 +217,11 @@ if __name__ == "__main__":
 
     # output the results (to-do: implementar)
     output.add_argument("-o", "--output", type=str, help="Output folder to save the results. Warning: will overwrite existing files.")
-    output.add_argument("-sc", "--savechain", action="store_true", help="Saves the chain to a .hd5 file in the output folder.")
-    output.add_argument("-g", "--gzip", type=int, help="Compress the chain with GZIP. Optionally specify the compression level with an integer from 0 (fast) to 9 (slow). Default is 4.")
-    output.add_argument("-l", "--lsf", action="store_true", help="Compress the chain with LSF.")
-    output.add_argument("-t", "--thin", type=int, help="A positive integer specifying the period for saving samples. The default is 1, which is usually the recommended value, unless your posterior takes too much memory.")
+    output.add_argument("-ss", "--save-samples", action="store_true", help="Saves the samples to chain.hd5 in the output folder.")
+    output.add_argument("-sw", "--save-warmup", action="store_true", help="Saves the warmup steps to the chain.")
+    output.add_argument("-sc", "--save-chain", action="store_true", help="Saves the chain(s) information to the file. This saves each chain in a different datasets instead of condensing it all into one.")
+    output.add_argument("-g", "--gzip", type=int, help="Compress the chain with GZIP. Optionally specify the compression level with an integer from 0 (fast) to 9 (slow). Recommended value is 4. Good compression, moderate speed.")
+    output.add_argument("-l", "--lzf", action="store_true", help="Compress the chain with LZF. Low to moderate compression, very fast.")
     output.add_argument("-n", "--noshow", action="store_true", help="Don't show plots in the screen.")
 
     # add help to its own subsection
@@ -229,10 +240,11 @@ if __name__ == "__main__":
     warmup = args.warmup
     chains = args.chains
     output = args.output
-    savechain = args.savechain
+    savesamples = args.save_samples
+    savewarmup = args.save_warmup
+    savechain = args.save_chain
     gzip = args.gzip
-    lsf = args.lsf
-    thin = args.thin
+    lzf = args.lzf
     noshow = args.noshow
 
     # check if output is provided if noshow is toggled
@@ -240,4 +252,4 @@ if __name__ == "__main__":
         raise Exception("Toggling -n, --noshow requires to provide an output folder, otherwise output will not be shown nor saved.")
 
     # call main with the provided arguments
-    main(model, data, yml, names, labels, initial, markers, samples, warmup, chains, output, savechain, gzip, lsf, thin, noshow)
+    main(model, data, yml, names, labels, initial, markers, samples, warmup, chains, output, savesamples, savewarmup, savechain, gzip, lzf, noshow)

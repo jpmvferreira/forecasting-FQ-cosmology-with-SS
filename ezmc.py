@@ -11,6 +11,7 @@ import getdist
 import pandas
 import stan
 import yaml
+import os
 
 
 def load(yml, names, labels, initial, markers, samples, warmup, chains):
@@ -76,7 +77,12 @@ def load(yml, names, labels, initial, markers, samples, warmup, chains):
 
 
 # main
-def main(model, data, yml, names, labels, initial, markers, samples, output, warmup, chains):
+def main(model, data, yml, names, labels, initial, markers, samples, warmup, chains, output, savechain, gzip, lsf, thin, noshow):
+    # prepare the output folder
+    if output != None and output[-1] != "/":
+        output += "/"
+        os.system(f"mkdir {output}")
+
     # get the statistical model from the provided .stan file
     with open(model, "r") as file:
         program = file.read()
@@ -119,6 +125,11 @@ def main(model, data, yml, names, labels, initial, markers, samples, output, war
     #summary = az.summary(fit)
     #print(summary)
 
+    # save the chain
+    if savechain:
+        dummie = 1
+        # to-do (hdf5, gzip, lsf, thin)
+
     # plot the time series
     fig, axes = plt.subplots(len(names), figsize=(10, 7), sharex=True)
     steps = np.arange(samples+warmup)
@@ -133,7 +144,11 @@ def main(model, data, yml, names, labels, initial, markers, samples, output, war
         ax.yaxis.set_label_coords(-0.1, 0.5)
         ax.grid()
     axes[-1].set_xlabel("step number")
-    plt.show()
+    if output:
+        plt.savefig(output + "time-series.png")
+    if not noshow:
+        plt.show()
+    plt.close()
 
     # plot the corner plot
     samples = fit[names[0]][0][chains*warmup:]
@@ -142,7 +157,21 @@ def main(model, data, yml, names, labels, initial, markers, samples, output, war
     mcsamples = MCSamples(samples=samples, names=names, labels=labels)
     g = plots.get_subplot_plotter()
     g.triangle_plot(mcsamples, filled=True, markers=markers)
-    plt.show()
+    if output:
+        plt.savefig(output + "corner.png")
+    if not noshow:
+        plt.show()
+    plt.close()
+
+    # print 1 and 2 sigma regions in a LaTex table
+    if output:
+        with open(output + "1sigma.tex", "w") as file:
+            file.write(mcsamples.getTable(limit=1).tableTex())
+        with open(output + "2sigma.tex", "w") as file:
+            file.write(mcsamples.getTable().tableTex())
+    if not noshow:
+        print(mcsamples.getTable(limit=1).tableTex())
+        print(mcsamples.getTable().tableTex())
 
     return
 
@@ -211,4 +240,4 @@ if __name__ == "__main__":
         raise Exception("Toggling -n, --noshow requires to provide an output folder, otherwise output will not be shown nor saved.")
 
     # call main with the provided arguments
-    main(model, data, yml, names, labels, initial, markers, samples, output, warmup, chains)
+    main(model, data, yml, names, labels, initial, markers, samples, warmup, chains, output, savechain, gzip, lsf, thin, noshow)

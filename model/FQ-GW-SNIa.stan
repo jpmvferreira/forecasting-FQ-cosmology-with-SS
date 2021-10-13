@@ -19,6 +19,7 @@ functions{
 // must match the columns for each input .csv file!
 // if two file have the same columns then they will stack as one big array.
 // the order of the files in the CLI must be the same as the order on which we define each data variable here
+// unless we're stacking several measurements with the same column names, those can show up anywhere
 data {
   // observations for gravitational waves
   int N1;

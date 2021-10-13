@@ -135,9 +135,11 @@ def main(model, data, yml, names, labels, initial, markers, samples, output, war
     axes[-1].set_xlabel("step number")
     plt.show()
 
-    # plot the corner plot (to-do: generalizar!) (como? um for a fazer stack com os varios names?)
-    samples = np.column_stack((fit["h"][0][chains*warmup:], fit["Omega_m"][0][chains*warmup:], fit["M"][0][chains*warmup:]))
-    mcsamples = MCSamples(samples=samples, names = names, labels = labels)
+    # plot the corner plot
+    samples = fit[names[0]][0][chains*warmup:]
+    for i in range(1, len(names)):
+        samples = np.column_stack((samples, fit[names[i]][0][chains*warmup:]))
+    mcsamples = MCSamples(samples=samples, names=names, labels=labels)
     g = plots.get_subplot_plotter()
     g.triangle_plot(mcsamples, filled=True, markers=markers)
     plt.show()

@@ -1,7 +1,7 @@
 // user defined functions
 functions{
-  real E(real z, real Omega_m) {
-    return ( Omega_m*(1.0+z)^3 + (1.0-Omega_m) )^(0.5);
+  real Einverse(real z, real Omega_m) {
+    return ( Omega_m*(1.0+z)^3 + (1.0-Omega_m) )^(-0.5);
   }
 
   real integrand(real x, real xc, real[] theta, real[] x_r, int[] x_i) {
@@ -11,12 +11,14 @@ functions{
     // real[] x_r: data values used to evaluate the integral (can be null)
     // real[] x_i: integer data values used to evaluate the integral (can be null)
     real Omega_m = theta[2];
-    return 1/E(x, Omega_m);
+    return Einverse(x, Omega_m);
   }
 }
 
 // declare variables that will hold the data required to the model
-// must match the columns for each input .csv file, without conflicts!
+// must match the columns for each input .csv file!
+// if two file have the same columns then they will stack as one big array.
+// the order of the files in the CLI must be the same as the order on which we define each data variable here
 data {
   // observations for gravitational waves
   int N1;
@@ -34,7 +36,7 @@ data {
 // define constants and transform the data
 // only evaluated once upon reading the data
 transformed data {
-  // create null data values used to integrate the integral
+  // create null data values to give to integrate_1d because it's required
   real x_r[0];
   int x_i[0];
 }
@@ -54,7 +56,7 @@ transformed parameters {
   real dL[N1];
   real correction;
   for (i in 1:N1) {
-    correction = ( (2*6^0.5 + M) / (2*6^0.5 + M/E(redshift[i], Omega_m)) )^0.5;
+    correction = ( (2*6^0.5 + M) / (2*6^0.5 + M*Einverse(redshift[i], Omega_m)) )^0.5;
     dL[i] = correction * (1.0 + redshift[i]) * (2.9979/h) * integrate_1d(integrand, 0, redshift[i], {h, Omega_m, M}, x_r, x_i);
   }
 
@@ -67,20 +69,19 @@ transformed parameters {
     Delta[i] = mb[i] - 5.0*log10((1.0+zcmb[i]) * integrate_1d(integrand, 0, zcmb[i], {h, Omega_m, M}, x_r, x_i));
     A += (Delta[i]/dmb[i])^2;
     B += Delta[i]/dmb[i]^2;
-    C += 1.0/dmb[i]^2;
+    C += dmb[i]^(-2);
   }
 }
 
 // likelihood and priors
 model {
   // priors
-  h ~ uniform(0.2, 1.2);
-  Omega_m ~ uniform(0, 1);
+  h ~ normal(0.7, 0.1);
+  Omega_m ~ normal(0.284, 0.1);
   M ~ uniform(-4.5, 10);
 
   // likelihood for the GW
   luminosity_distance ~ normal(dL, error);
-  //target += -(N1/2.0)*log(2.0*pi()); // yah secalhar eh inutil pq estamos a somar uma constante...
 
   // likelihood for the SNIa
   target += -A + B^2/C;

@@ -84,18 +84,32 @@ def main(model, data, yml, names, labels, initial, markers, samples, output, war
     # get the configutation from the provided .yml file and/or CLI
     names, labels, initial, markers, samples, warmup, chains = load(yml, names, labels, initial, markers, samples, warmup, chains)
 
-    # get the data from the provided .csv file(s) (to-do: generalizar e pensar como deve fazer - nomes ou ordem)
+    # get the data from the provided .csv file(s)
     dic = {}
-    columns = pandas.read_csv(data[0], comment="#", nrows=0).columns.tolist()
-    csv = pandas.read_csv(data[0], comment="#")
-    dic["N1"] = len(csv[columns[0]])
-    for column in columns:
-        dic[column] = np.array(csv[column])
-    columns = pandas.read_csv(data[1], comment="#", nrows=0).columns.tolist()
-    csv = pandas.read_csv(data[1], comment="#")
-    dic["N2"] = len(csv[columns[0]])
-    for column in columns:
-        dic[column] = np.array(csv[column])
+    aux = {0: None}
+    i = 0
+    for file in data:
+        header = pandas.read_csv(file, comment="#", nrows=0).columns.tolist()
+        columns = pandas.read_csv(file, comment="#")
+
+        stack = False
+        for j in range(0, i+1):
+            if header == aux[j]:
+                stack = True
+                break
+
+        if stack:
+            dic[f"N{j}"] = dic[f"N{j}"] + len(columns[header[0]])
+        else:
+            i += 1
+            aux[i] = header
+            dic[f"N{i}"] = len(columns[header[0]])
+
+        for var in header:
+            if var not in dic.keys():
+                dic[var] = np.array(columns[var])
+            else:
+                dic[var] = np.append(dic[var], np.array(columns[var]))
 
     # run the sampler
     posterior = stan.build(program, data=dic)

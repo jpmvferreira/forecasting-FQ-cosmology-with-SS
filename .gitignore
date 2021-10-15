@@ -3,10 +3,6 @@
 /misc
 /papers
 
-# chain files
-chain.hd5
-chain.hd5.tar.gz
-
 # compiled files
 __pycache__
 

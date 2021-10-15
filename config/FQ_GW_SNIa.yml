@@ -17,7 +17,7 @@ labels: ["h", "\\Omega_m", "M"]
 initial:
   h: gauss(0.7, 0.15)
   Omega_m: gauss(0.284, 0.1)
-  M: gauss(0, 2.5)
+  M: gauss(0, 10)
 
 # Line markers to show rendered in the plots.
 # These can be used to represent the true or expected values.
@@ -28,11 +28,11 @@ markers:
   M: 0
 
 # Number of steps to sample the posterior distribution, after the warmup.
-samples: 100
+samples: 1000
 
 # Number of steps to warmup each chain.
 # These samples will be discarded.
-warmup: 75
+warmup: 100
 
 # Number of chains to run.
 # Will run in parallel, provided that there are enough threads to do so.

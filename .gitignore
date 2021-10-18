@@ -2,6 +2,8 @@
 /*.ze
 /misc
 /papers
+slurm.sh
+log-slurm-*.sh
 
 # compiled files
 __pycache__

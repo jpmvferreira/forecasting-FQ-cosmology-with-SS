@@ -3,7 +3,7 @@
 /misc
 /papers
 slurm.sh
-log-slurm-*.sh
+log-slurm-*.txt
 
 # compiled files
 __pycache__

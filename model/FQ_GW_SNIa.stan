@@ -77,9 +77,9 @@ transformed parameters {
 // likelihood and priors
 model {
   // priors
-  h ~ normal(0.7, 0.1);
-  Omega_m ~ normal(0.284, 0.1);
-  M ~ normal(0, 30);
+  h ~ normal(0.7, 10);
+  Omega_m ~ normal(0.284, 10);
+  M ~ normal(0, 5);
 
   // likelihood for the GW
   luminosity_distance ~ normal(dL, error);

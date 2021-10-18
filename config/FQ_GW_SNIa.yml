@@ -28,11 +28,11 @@ markers:
   M: 0
 
 # Number of steps to sample the posterior distribution, after the warmup.
-samples: 750
+samples: 1000
 
 # Number of steps to warmup each chain.
 # These samples will be discarded.
-warmup: 150
+warmup: 250
 
 # Number of chains to run.
 # Will run in parallel, provided that there are enough threads to do so.

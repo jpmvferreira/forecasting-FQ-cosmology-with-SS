@@ -1,3 +1,6 @@
+//// FQ_GW_SNIa.stan
+// stan model file for GW events and SNIa data, for a single parameter F(Q) modified gravity model that mimics a ΛCDM background
+
 // user defined functions
 functions{
   real Einverse(real z, real Omega_m) {

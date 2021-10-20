@@ -1,16 +1,16 @@
-# A Python like list with the names for each parameter.
-# Must match the names defined in the .stan model file!
-names: ["h", "Omega_m", "M"]
+## FQ_GW_SNIa.yml
+# ezmc configuration file for FQ_GW_SNIa.stan
 
-# A Python like list with the labels for each parameter.
-# If empty the names will be used instead.
-# These will be rendered on the plots and support latex, however, you have to escape the blackslashes.
-# (e.g.: write \\alpha instead of \alpha for the character α)
-labels: ["h", "\\Omega_m", "M"]
+# The names of the parameters defined in the .stan model file.
+names: [h, Omega_m, M]
+
+# The labels to show in the plots and tables, for each parameter.
+# Latex is supported.
+labels: [h, \Omega_m, M]
 
 # Initial condition for each parameter, for each chain.
 # This will run an arbitrary Python command (so be careful!).
-# The most relevant initial conditions are:
+# The most relevant initial conditions implemented in this program are:
 # - gauss(mu, sigma)
 # - uniform(a, b)
 # - float(a)
@@ -20,22 +20,21 @@ initial:
   M: gauss(0, 5)
 
 # Line markers to show rendered in the plots.
-# These can be used to represent the true or expected values.
-# Leave empty to have no markers or suppress an entry to have no marker associated with that parameter.
+# These are optional and can be used to represent the true or expected values.
 markers:
   h: 0.7
   Omega_m: 0.284
   M: 0
 
 # Number of steps to sample the posterior distribution, after the warmup.
-samples: 1000
+samples: 2500
 
 # Number of steps to warmup each chain.
 # These samples will be discarded.
-warmup: 250
+warmup: 100
 
 # Number of chains to run.
-# Will run in parallel, provided that there are enough threads to do so.
 # Leave empty for a single chain.
+# Will run in parallel, provided that there are enough threads to do so.
 # Keep in mind that each chain will do a total number of steps = warmup + samples.
 chains: 4

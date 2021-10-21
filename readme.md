@@ -36,8 +36,11 @@ $ pip install -r env/requirements.txt
 
 
 ## Credits
-This repository as well as the code in it was developed by:
-- José Ferreira - [joseferreira@alunos.fc.ul.pt](mailto:joseferreira@alunos.fc.ul.pt)
+This program and its documentation was developed by *José Ferreira*:
+- Institutional email: [joseferreira@alunos.fc.ul.pt](mailto:joseferreira@alunos.fc.ul.pt)
+- Personal email: [jose@jpferreira.me](mailto:jose@jpferreira.me)
+- Github: [@jpmvferreira](https://github.com/jpmvferreira)
+
 
 Under the supervision of:
 - José Mimoso

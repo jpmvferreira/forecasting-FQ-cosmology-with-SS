@@ -20,9 +20,14 @@ $ git clone https://github.com/jpmvferreira/forecasting-viable-FQ-cosmology-with
 $ cd forecasting-viable-FQ-cosmology-with-GW
 ```
 
-Then, assuming that you are using `conda`, but it also works for `micromamba` create a new environment from `env/environment.yml`:
+Then, assuming that you are using `conda`, create a new environment from `env/environment.yml`:
 ```console
 $ conda env create -f env/environment.yml
+```
+
+You can now activate on this newly created environment:
+```console
+$ conda activate fqgw
 ```
 
 And finally install all of the packages installed by `pip`:

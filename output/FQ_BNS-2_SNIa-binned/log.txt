@@ -1,0 +1,5 @@
+Running on machine: Linux nonius2oal-0-11.local 2.6.32-504.8.1.el6_lustre.x86_64 #1 SMP Thu Feb 26 22:39:27 PST 2015 x86_64 x86_64 x86_64 GNU/Linux
+Program executed with flags: -m model/FQ_MBHB_SNIa.py -d data/BNS-2.csv data/SNIa-binned.csv -M 100000 -c 10000 -% 5 -s 50000 -o output/FQ_BNS-2_SNIa-binned -n -w 12 --processes 6 --noprogress
+Execution time (hours:minutes:seconds): 3:11:12.
+Chain has converged and provided s = 50000 steps whitin 5.0% of each other, after 70000 steps.
+Discarded the first 20000 steps.

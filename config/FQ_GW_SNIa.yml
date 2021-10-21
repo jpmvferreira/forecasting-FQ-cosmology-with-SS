@@ -17,7 +17,7 @@ labels: [h, \Omega_m, M]
 initial:
   h: gauss(0.7, 0.15)
   Omega_m: gauss(0.284, 0.1)
-  M: gauss(0, 5)
+  M: uniform(-2*6**0.5, 10)
 
 # Line markers to show rendered in the plots.
 # These are optional and can be used to represent the true or expected values.

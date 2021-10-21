@@ -2,8 +2,14 @@
 /*.ze
 /misc
 /papers
+
+# slurm related files
 slurm.sh
 log-slurm-*.txt
+
+# chains
+chain.hd5
+chain.hd5.tar.gz
 
 # compiled files
 __pycache__

@@ -1,7 +1,7 @@
 <p align="center"><b>v1 - Work in progress</b></p>
 
 ## Abstract
-(...)
+Source code for a project which forecasts the viability of a single parameter cosmological model in F(Q) geometry with a ΛCDM background using gravitational waves.
 
 
 ## Table of contents

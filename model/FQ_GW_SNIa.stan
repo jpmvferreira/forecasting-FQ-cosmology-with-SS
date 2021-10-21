@@ -49,8 +49,8 @@ transformed data {
 // these will be sampled and optimized
 parameters {
   real<lower=0> h;
-  real<lower = 0, upper=1> Omega_m;
-  real M;
+  real<lower=0, upper=1> Omega_m;
+  real<lower=2*6^0.5> M;
 }
 
 // allows new variables to be defined in terms of data and/or parameters that may be used later

@@ -14,13 +14,13 @@
 ## Virtual environment
 This virtual environment was created using [micromamba](https://mamba.readthedocs.io/en/latest/), a minimal conda compatible package manager.
 
-To replicate the virtual environment start by cloning this repository locally:
+To replicate the virtual environment start by cloning and cd in this repository:
 ```console
-$ https://github.com/jpmvferreira/wip1-2
-$ cd wip1-2
+$ git clone https://github.com/jpmvferreira/forecasting-viable-FQ-cosmology-with-GW
+$ cd forecasting-viable-FQ-cosmology-with-GW
 ```
 
-Then, assuming that you are using conda, create a new environment from `env/environment.yml` file:
+Then, assuming that you are using `conda`, but it also works for `micromamba` create a new environment from `env/environment.yml`:
 ```console
 $ conda env create -f env/environment.yml
 ```

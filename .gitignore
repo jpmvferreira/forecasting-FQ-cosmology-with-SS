@@ -6,6 +6,7 @@
 # slurm related files
 slurm.sh
 log-slurm-*.txt
+slurm-*.sh
 
 # chains
 chain.hd5

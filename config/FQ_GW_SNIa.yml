@@ -34,7 +34,7 @@ samples: 2000
 warmup: 100
 
 # Number of chains to run.
-# Leave empty for a single chain.
-# Will run in parallel, provided that there are enough threads to do so.
+# Defaults to all available hardware threads.
+# Will run in parallel or sequentially based on the number of available threads.
 # Keep in mind that each chain will do a total number of steps = warmup + samples.
 chains: 4

@@ -1,3 +1,6 @@
+## LCDM_GW_SNIa.yml
+# ez-stan configuration file for LCDM_GW_SNIa.stan
+
 # A Python like list with the names for each parameter.
 # Must match the names defined in the .stan model file!
 names: ["h", "Omega_m"]

@@ -1,10 +1,13 @@
 ## FQ_GW_SNIa.yml
-# ezmc configuration file for FQ_GW_SNIa.stan
+# ez-stan configuration file for FQ_GW_SNIa.stan
 
-# The names of the parameters defined in the .stan model file.
+# The names of the parameters
+# Must match the names defined in the stan model file.
+# It also must match the names used in the "initial" and "markers" fields down below.
 names: [h, Omega_m, M]
 
 # The labels to show in the plots and tables, for each parameter.
+# Defaults to the name of each parameter if it is not provided.
 # Latex is supported.
 labels: [h, \Omega_m, M]
 

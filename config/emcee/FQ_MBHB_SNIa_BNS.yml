@@ -6,7 +6,7 @@
 names: [h, Omega_m, M]
 
 # The labels to show in the plots and tables, for each parameter.
-# Defaults to the name of each parameter if it is not provided.
+# Defaults to the name of each parameter if not provided.
 # Latex is supported.
 labels: [h, \Omega_m, M]
 

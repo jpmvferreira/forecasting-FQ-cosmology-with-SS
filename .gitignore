@@ -4,9 +4,8 @@
 /papers
 
 # slurm related files
-slurm.sh
-log-slurm-*.txt
-slurm-*.sh
+/log-slurm
+slurm*
 
 # chains
 chain.hd5

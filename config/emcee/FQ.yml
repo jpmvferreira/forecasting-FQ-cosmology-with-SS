@@ -19,7 +19,7 @@ labels: [h, \Omega_m, M]
 # - float(a)
 initial:
   h: gauss(0.7, 0.15)
-  Omega_m: gauss(0.284, 0.1)
+  Omega_m: gauss(0.284, 0.05)
   M: uniform(-2*6**0.5, 10)
 
 # Line markers to show rendered in the plots.

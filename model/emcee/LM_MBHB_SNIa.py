@@ -61,23 +61,3 @@ def ln_probability(θ, redshifts, distances, errors, candleredshifts, candlemagn
     if not np.isfinite(prior):
         return -np.inf
     return prior + ln_likelihood(θ, redshifts, distances, errors, candleredshifts, candlemagnitudes, candleerrors)
-
-
-# initialize this model and provide all relevant parameters
-def initialize(nwalkers):
-    # number of free parameters
-    ndim = 2
-
-    # initial values for each walker
-    init = [0.7, 0.284] + (0.1, 0.1) * np.random.uniform(-1, 1, (nwalkers, ndim))
-
-    # auxiliary names list
-    names = ["h", "Ω_m"]
-
-    # labels for each variable
-    labels = ["h", "Ω_m"]
-
-    # markers to show in the corner plot
-    markers = {"h":0.7, "Ω_m":0.284}
-
-    return ndim, init, names, labels, markers

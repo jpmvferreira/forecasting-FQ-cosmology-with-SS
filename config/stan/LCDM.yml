@@ -1,5 +1,5 @@
-## LCDM_GW_SNIa.yml
-# ez-stan configuration file for LCDM_GW_SNIa.stan
+## LCDM.yml
+# ez-stan configuration file for ΛCDM
 
 # A Python like list with the names for each parameter.
 # Must match the names defined in the .stan model file!

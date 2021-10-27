@@ -33,7 +33,7 @@ markers:
 percentage: 2.5
 
 # Number of steps to sample the posterior distribution, after the convergence is met.
-samples: 100000
+samples: 75000
 
 # Number of steps to check if convergence is met.
 # Defaults to 1000 steps.
@@ -42,7 +42,7 @@ check: 5000
 # Maximum number of steps to compute, regardless if the chain has converged or not.
 # Must be larger than the number of steps to compute.
 # Defaults to 100.000 steps.
-maxsteps: 500000
+maxsteps: 250000
 
 # The number of walkers to sample the likelihood.
 # Defaults to 32 walkers.
@@ -50,4 +50,4 @@ walkers: 16
 
 # The number of processes to spawn to make use of multi core processors.
 # Defaults to all available hardware threads.
-processes: 6
+processes: 4

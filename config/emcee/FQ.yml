@@ -46,7 +46,7 @@ maxsteps: 500000
 
 # The number of walkers to sample the likelihood.
 # Defaults to 32 walkers.
-#walkers: 32
+walkers: 16
 
 # The number of processes to spawn to make use of multi core processors.
 # Defaults to all available hardware threads.

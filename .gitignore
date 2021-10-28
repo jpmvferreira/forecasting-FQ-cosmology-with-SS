@@ -7,10 +7,6 @@
 /log-slurm
 /slurm*.sh
 
-# chains
-chain.hd5
-chain.hd5.tar.gz
-
 # compiled files
 __pycache__
 

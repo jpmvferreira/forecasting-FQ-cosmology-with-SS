@@ -1,0 +1,212 @@
+[*] Fetching arguments
+
+[*] Setting up the output folder
+
+[*] Importing the model
+
+[*] Importing input data
+
+[*] Running stan
+Building...
+
+Building: found in cache, done.Messages from stanc:
+Warning in '/tmp/httpstan_sz02sdfr/model_x7tlykvo.stan', line 73, column 62: The variable integrand may not have been assigned a value before its use.
+Warning in '/tmp/httpstan_sz02sdfr/model_x7tlykvo.stan', line 64, column 73: The variable integrand may not have been assigned a value before its use.
+Sampling:   0%
+Sampling:   0% (1/15000)
+Sampling:   0% (2/15000)
+Sampling:   0% (3/15000)
+Sampling:   0% (4/15000)
+Sampling:   0% (5/15000)
+Sampling:   1% (104/15000)
+Sampling:   1% (203/15000)
+Sampling:   2% (302/15000)
+Sampling:   3% (401/15000)
+Sampling:   3% (500/15000)
+Sampling:   4% (600/15000)
+Sampling:   5% (700/15000)
+Sampling:   5% (800/15000)
+Sampling:   6% (900/15000)
+Sampling:   7% (1000/15000)
+Sampling:   7% (1100/15000)
+Sampling:   8% (1200/15000)
+Sampling:   9% (1300/15000)
+Sampling:   9% (1400/15000)
+Sampling:  10% (1500/15000)
+Sampling:  11% (1600/15000)
+Sampling:  11% (1700/15000)
+Sampling:  12% (1800/15000)
+Sampling:  13% (1900/15000)
+Sampling:  13% (2000/15000)
+Sampling:  14% (2101/15000)
+Sampling:  15% (2202/15000)
+Sampling:  15% (2303/15000)
+Sampling:  16% (2404/15000)
+Sampling:  17% (2505/15000)
+Sampling:  17% (2604/15000)
+Sampling:  18% (2703/15000)
+Sampling:  19% (2802/15000)
+Sampling:  19% (2901/15000)
+Sampling:  20% (3000/15000)
+Sampling:  21% (3100/15000)
+Sampling:  21% (3200/15000)
+Sampling:  22% (3300/15000)
+Sampling:  23% (3400/15000)
+Sampling:  23% (3500/15000)
+Sampling:  24% (3600/15000)
+Sampling:  25% (3700/15000)
+Sampling:  25% (3800/15000)
+Sampling:  26% (3900/15000)
+Sampling:  27% (4000/15000)
+Sampling:  27% (4100/15000)
+Sampling:  28% (4200/15000)
+Sampling:  29% (4300/15000)
+Sampling:  29% (4400/15000)
+Sampling:  30% (4500/15000)
+Sampling:  31% (4600/15000)
+Sampling:  31% (4700/15000)
+Sampling:  32% (4800/15000)
+Sampling:  33% (4900/15000)
+Sampling:  33% (5000/15000)
+Sampling:  34% (5100/15000)
+Sampling:  35% (5200/15000)
+Sampling:  35% (5300/15000)
+Sampling:  36% (5400/15000)
+Sampling:  37% (5500/15000)
+Sampling:  37% (5600/15000)
+Sampling:  38% (5700/15000)
+Sampling:  39% (5800/15000)
+Sampling:  39% (5900/15000)
+Sampling:  40% (6000/15000)
+Sampling:  41% (6100/15000)
+Sampling:  41% (6200/15000)
+Sampling:  42% (6300/15000)
+Sampling:  43% (6400/15000)
+Sampling:  43% (6500/15000)
+Sampling:  44% (6600/15000)
+Sampling:  45% (6700/15000)
+Sampling:  45% (6800/15000)
+Sampling:  46% (6900/15000)
+Sampling:  47% (7000/15000)
+Sampling:  47% (7100/15000)
+Sampling:  48% (7200/15000)
+Sampling:  49% (7300/15000)
+Sampling:  49% (7400/15000)
+Sampling:  50% (7500/15000)
+Sampling:  51% (7600/15000)
+Sampling:  51% (7700/15000)
+Sampling:  52% (7800/15000)
+Sampling:  53% (7900/15000)
+Sampling:  53% (8000/15000)
+Sampling:  54% (8100/15000)
+Sampling:  55% (8200/15000)
+Sampling:  55% (8300/15000)
+Sampling:  56% (8400/15000)
+Sampling:  57% (8500/15000)
+Sampling:  57% (8600/15000)
+Sampling:  58% (8700/15000)
+Sampling:  59% (8800/15000)
+Sampling:  59% (8900/15000)
+Sampling:  60% (9000/15000)
+Sampling:  61% (9100/15000)
+Sampling:  61% (9200/15000)
+Sampling:  62% (9300/15000)
+Sampling:  63% (9400/15000)
+Sampling:  63% (9500/15000)
+Sampling:  64% (9600/15000)
+Sampling:  65% (9700/15000)
+Sampling:  65% (9800/15000)
+Sampling:  66% (9900/15000)
+Sampling:  67% (10000/15000)
+Sampling:  67% (10100/15000)
+Sampling:  68% (10200/15000)
+Sampling:  69% (10300/15000)
+Sampling:  69% (10400/15000)
+Sampling:  70% (10500/15000)
+Sampling:  71% (10600/15000)
+Sampling:  71% (10700/15000)
+Sampling:  72% (10800/15000)
+Sampling:  73% (10900/15000)
+Sampling:  73% (11000/15000)
+Sampling:  74% (11100/15000)
+Sampling:  75% (11200/15000)
+Sampling:  75% (11300/15000)
+Sampling:  76% (11400/15000)
+Sampling:  77% (11500/15000)
+Sampling:  77% (11600/15000)
+Sampling:  78% (11700/15000)
+Sampling:  79% (11800/15000)
+Sampling:  79% (11900/15000)
+Sampling:  80% (12000/15000)
+Sampling:  81% (12100/15000)
+Sampling:  81% (12200/15000)
+Sampling:  82% (12300/15000)
+Sampling:  83% (12400/15000)
+Sampling:  83% (12500/15000)
+Sampling:  84% (12600/15000)
+Sampling:  85% (12700/15000)
+Sampling:  85% (12800/15000)
+Sampling:  86% (12900/15000)
+Sampling:  87% (13000/15000)
+Sampling:  87% (13100/15000)
+Sampling:  88% (13200/15000)
+Sampling:  89% (13300/15000)
+Sampling:  89% (13400/15000)
+Sampling:  90% (13500/15000)
+Sampling:  91% (13600/15000)
+Sampling:  91% (13700/15000)
+Sampling:  92% (13800/15000)
+Sampling:  93% (13900/15000)
+Sampling:  93% (14000/15000)
+Sampling:  94% (14100/15000)
+Sampling:  95% (14200/15000)
+Sampling:  95% (14300/15000)
+Sampling:  96% (14400/15000)
+Sampling:  97% (14500/15000)
+Sampling:  97% (14600/15000)
+Sampling:  98% (14700/15000)
+Sampling:  99% (14800/15000)
+Sampling:  99% (14900/15000)
+Sampling: 100% (15000/15000)
+Sampling: 100% (15000/15000), done.
+Messages received during sampling:
+  Gradient evaluation took 0.00732 seconds
+  1000 transitions using 10 leapfrog steps per transition would take 73.2 seconds.
+  Adjust your expectations accordingly!
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: normal_lpdf: Location parameter[1] is -nan, but must be finite! (in '/tmp/httpstan_n7rn6y7y/model_x7tlykvo.stan', line 88, column 2 to column 42)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: normal_lpdf: Location parameter[1] is inf, but must be finite! (in '/tmp/httpstan_n7rn6y7y/model_x7tlykvo.stan', line 88, column 2 to column 42)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Gradient evaluation took 0.007456 seconds
+  1000 transitions using 10 leapfrog steps per transition would take 74.56 seconds.
+  Adjust your expectations accordingly!
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: normal_lpdf: Location parameter[1] is -nan, but must be finite! (in '/tmp/httpstan_n7rn6y7y/model_x7tlykvo.stan', line 88, column 2 to column 42)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Gradient evaluation took 0.007443 seconds
+  1000 transitions using 10 leapfrog steps per transition would take 74.43 seconds.
+  Adjust your expectations accordingly!
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: normal_lpdf: Location parameter[1] is -nan, but must be finite! (in '/tmp/httpstan_n7rn6y7y/model_x7tlykvo.stan', line 88, column 2 to column 42)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Gradient evaluation took 0.007418 seconds
+  1000 transitions using 10 leapfrog steps per transition would take 74.18 seconds.
+  Adjust your expectations accordingly!
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: normal_lpdf: Location parameter[1] is -nan, but must be finite! (in '/tmp/httpstan_n7rn6y7y/model_x7tlykvo.stan', line 88, column 2 to column 42)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Gradient evaluation took 0.008894 seconds
+  1000 transitions using 10 leapfrog steps per transition would take 88.94 seconds.
+  Adjust your expectations accordingly!
+Removed no burn in
+
+[*] Plotting routines
+
+[*] Saving information to output folder

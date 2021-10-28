@@ -34,7 +34,7 @@ samples: 2500
 
 # Number of steps to warmup each chain.
 # These samples will be discarded.
-warmup: 250
+warmup: 500
 
 # Number of chains to run.
 # Defaults to all available hardware threads.

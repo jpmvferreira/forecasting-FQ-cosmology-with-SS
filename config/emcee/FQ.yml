@@ -30,7 +30,7 @@ markers:
   M: 0
 
 # Autocorreation time must change less than this percentage to consider convergence.
-percentage: 2.5
+percentage: 5
 
 # Number of steps to sample the posterior distribution, after the convergence is met.
 samples: 75000

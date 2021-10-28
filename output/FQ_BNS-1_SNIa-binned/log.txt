@@ -1,5 +1,0 @@
-MODIFIED
-Program executed with flags: -m model/FQ_mbhb_snia.py -d data/bns-1.csv data/snia-binned.csv -M 250000 -c 10000 -% 2.5 -s 100000 -o /mnt/ram-disk/FQ_bns-1_snia-binned --chain --processes 4 -w 16
-Execution time (hours:minutes:seconds): 6:17:53.
-Chain has converged and provided s = 100000 steps whitin 2.5% of each other, after 160000 steps.
-Discarded the first 60000 steps.

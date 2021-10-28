@@ -1,5 +1,0 @@
-Running on machine: Linux Legion 5.4.148-1-MANJARO #1 SMP PREEMPT Wed Sep 22 12:31:49 UTC 2021 x86_64 GNU/Linux
-Program executed with flags: -m model/FQ_MBHB_SNIa.py -d data/mbhb-10.csv data/snia-binned.csv -M 500000 -c 5000 -% 2.5 -s 100000 -o output/FQ_mbhb-10_snia-binned --chain --tmp --tar -n -w 8
-Execution time (hours:minutes:seconds): 0:24:05.
-Chain has converged and provided s = 100000 steps whitin 2.5% of each other, after 155000 steps.
-Discarded the first 55000 steps.

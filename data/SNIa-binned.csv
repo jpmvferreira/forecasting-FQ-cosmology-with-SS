@@ -1,4 +1,4 @@
-# Derived from /raw-data/Snia-binned.txt to include only redshift, magnitude and magnitude error in a .csv format 
+# Derived from /data/raw/Snia-binned.txt to include only redshift, magnitude and magnitude error in a .csv format 
 
 zcmb,mb,dmb
 0.014,14.57001926,0.0311

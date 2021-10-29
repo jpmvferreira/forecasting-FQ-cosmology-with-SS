@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 ## FoM.py
 # creates a figure of merit, for a given set of outputs
 # this is done by computing the median of the area for each parameter in the 2 sigma region

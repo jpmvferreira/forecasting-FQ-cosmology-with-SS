@@ -51,4 +51,5 @@ This work is being carried out for an on-going research project, supervised by:
 
 ## License
 The contents of this repository are licensed under the MIT license.
+
 For further information refer to the file [license.md](./license.md).

@@ -4,15 +4,20 @@
 # creates a figure of merit, for a given set of outputs
 # this is done by computing the median of the area for each parameter in the 2 sigma region
 
+import matplotlib.pyplot as plt
 from statistics import median
 import argparse
 
 parser = argparse.ArgumentParser(description = "Compute the FoM")
 parser.add_argument("-n", "--names", type=str, help="String with a Python like list with the names for each parameter, e.g.: \"['a', 'b']\". Must match the names present in the 'CIs.tex' file.", required=True)
-parser.add_argument("-i", "--input", nargs="*", help="The input folder(s) that contain a 'CIs.tex' file, for the same parameter space.", required=True)
+parser.add_argument("-i", "--input", nargs="*", help="Input folder(s) with the same parameter space.", required=True)
+parser.add_argument("-p", "--plot", nargs="*", help="Given two parameter names to be plotted in a 2D scatter plot.")
+parser.add_argument("-a", "--annotate", type=str, help="Annotations for each input to show on plot.")
 args = parser.parse_args()
 names = eval(args.names)
 input = args.input
+plot = args.plot
+annotate = eval(args.annotate) if args.annotate else None
 
 d = {}
 for name in names:
@@ -50,3 +55,15 @@ for i in range(len(names)):
     folder = d[names[i]].index(med)
     print(f"folder: {input[folder]}")
     print()
+
+if plot:
+    plt.scatter(d[plot[0]], d[plot[1]], zorder=3.5)
+    plt.xlabel("$\Delta$" + plot[0])
+    plt.ylabel("$\Delta$" + plot[1])
+    plt.grid(alpha=0.5, zorder=0.5)
+
+    if annotate:
+        for i, txt in enumerate(annotate):
+            plt.annotate(txt, (d[plot[0]][i], d[plot[1]][i]))
+
+    plt.show()

@@ -58,8 +58,8 @@ for i in range(len(names)):
 
 if plot:
     plt.scatter(d[plot[0]], d[plot[1]], zorder=3.5)
-    plt.xlabel("$\Delta$" + plot[0])
-    plt.ylabel("$\Delta$" + plot[1])
+    plt.xlabel(f"$\sigma_" + plot[0] + "$")
+    plt.ylabel(f"$\sigma_" + plot[1] + "$")
     plt.grid(alpha=0.5, zorder=0.5)
 
     if annotate:

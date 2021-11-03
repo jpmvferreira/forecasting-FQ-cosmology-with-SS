@@ -2,17 +2,16 @@
 # ez-stan configuration file for a single parameter F(Q) model
 
 # The names of the parameters
-# Must match the names defined in the stan model file.
-# It also must match the names used in the "initial" and "markers" fields down below.
+# Must match the names defined in the stan model file!
 names: [h, Omega_m, M]
 
 # The labels to show in the plots and tables, for each parameter.
-# Defaults to the name of each parameter if it is not provided.
+# Defaults to the name of each parameter if not provided.
 # Latex is supported.
 labels: [h, \Omega_m, M]
 
-# Initial condition for each parameter, for each chain.
-# This will run an arbitrary Python command (so be careful!).
+# Initial condition for each parameter, for each walker.
+# Must be inside the model restrictions, otherwise it might crash.
 # The most relevant initial conditions implemented in this program are:
 # - gauss(mu, sigma)
 # - uniform(a, b)
@@ -32,8 +31,7 @@ markers:
 # Number of steps to sample the posterior distribution, after the warmup.
 samples: 2500
 
-# Number of steps to warmup each chain.
-# These samples will be discarded.
+# Number of steps to warmup each chain, which will be discarded.
 warmup: 500
 
 # Number of chains to run.

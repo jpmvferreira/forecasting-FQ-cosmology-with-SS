@@ -38,7 +38,7 @@ data {
 }
 
 // define constants and transform the data
-// only evaluated once upon reading the data
+// only evaluated in the beginning of each chain
 transformed data {
   // create null data values to give to integrate_1d because it's required
   real x_r[0];
@@ -78,6 +78,7 @@ transformed parameters {
 }
 
 // likelihood and priors
+// will be evaluated on each leapfrog step
 model {
   // priors
   h ~ normal(0.7, 10);
@@ -92,5 +93,6 @@ model {
 }
 
 // allows derived quantities based on parameters, data, and rng
+// is executed once per iteration
 generated quantities {
 }

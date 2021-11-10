@@ -34,9 +34,9 @@ To replicate the virtual environment start by cloning this repository locally:
 $ git clone https://github.com/jpmvferreira/forecasting-viable-FQ-cosmology-with-GW fqgw
 ```
 
-Then, assuming that you are using `conda`, create a new environment from `env/environment.yml`:
+Then, assuming that you are using `conda`, create a new environment from `venv/environment.yml`:
 ```console
-$ conda env create -f fqgw/env/environment.yml
+$ conda env create -f fqgw/venv/environment.yml
 ```
 
 Activate on this newly created environment:
@@ -46,7 +46,7 @@ $ conda activate fqgw
 
 And finally, install all packages managed by `pip`:
 ```console
-$ pip install -r fqgw/env/requirements.txt
+$ pip install -r fqgw/venv/requirements.txt
 ```
 
 

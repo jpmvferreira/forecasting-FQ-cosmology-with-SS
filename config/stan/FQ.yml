@@ -1,5 +1,5 @@
 ## FQ.yml
-# ez-stan configuration file for a single parameter F(Q) model
+# smc-stan configuration file for a single parameter F(Q) model
 
 # The names of the parameters
 # Must match the names defined in the stan model file!

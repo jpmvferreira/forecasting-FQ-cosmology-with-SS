@@ -19,6 +19,7 @@ Sampling:   0% (2/3000)
 Sampling:   0% (3/3000)
 Sampling:   0% (4/3000)
 Sampling:   0% (5/3000)
+Sampling:   3% (104/3000)
 Sampling:   4% (105/3000)
 Sampling:   7% (204/3000)
 Sampling:   7% (205/3000)
@@ -26,6 +27,7 @@ Sampling:  10% (304/3000)
 Sampling:  10% (305/3000)
 Sampling:  13% (404/3000)
 Sampling:  14% (405/3000)
+Sampling:  17% (504/3000)
 Sampling:  17% (505/3000)
 Sampling:  20% (604/3000)
 Sampling:  23% (703/3000)
@@ -54,28 +56,8 @@ Sampling:  97% (2900/3000)
 Sampling: 100% (3000/3000)
 Sampling: 100% (3000/3000), done.
 Messages received during sampling:
-  Gradient evaluation took 0.108367 seconds
-  1000 transitions using 10 leapfrog steps per transition would take 1083.67 seconds.
-  Adjust your expectations accordingly!
-  WARNING: There aren't enough warmup iterations to fit the
-           three stages of adaptation as currently configured.
-           Reducing each adaptation stage to 15%/75%/10% of
-           the given number of warmup iterations:
-             init_buffer = 15
-             adapt_window = 75
-             term_buffer = 10
-  Gradient evaluation took 0.107065 seconds
-  1000 transitions using 10 leapfrog steps per transition would take 1070.65 seconds.
-  Adjust your expectations accordingly!
-  WARNING: There aren't enough warmup iterations to fit the
-           three stages of adaptation as currently configured.
-           Reducing each adaptation stage to 15%/75%/10% of
-           the given number of warmup iterations:
-             init_buffer = 15
-             adapt_window = 75
-             term_buffer = 10
-  Gradient evaluation took 0.108626 seconds
-  1000 transitions using 10 leapfrog steps per transition would take 1086.26 seconds.
+  Gradient evaluation took 0.106457 seconds
+  1000 transitions using 10 leapfrog steps per transition would take 1064.57 seconds.
   Adjust your expectations accordingly!
   WARNING: There aren't enough warmup iterations to fit the
            three stages of adaptation as currently configured.
@@ -108,18 +90,8 @@ Messages received during sampling:
   Exception: normal_lpdf: Location parameter[1] is inf, but must be finite! (in '/tmp/httpstan_7xbe86ld/model_gn4xu2ns.stan', line 67, column 2 to column 42)
   If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
   but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
-  Gradient evaluation took 0.106573 seconds
-  1000 transitions using 10 leapfrog steps per transition would take 1065.73 seconds.
-  Adjust your expectations accordingly!
-  WARNING: There aren't enough warmup iterations to fit the
-           three stages of adaptation as currently configured.
-           Reducing each adaptation stage to 15%/75%/10% of
-           the given number of warmup iterations:
-             init_buffer = 15
-             adapt_window = 75
-             term_buffer = 10
-  Gradient evaluation took 0.107754 seconds
-  1000 transitions using 10 leapfrog steps per transition would take 1077.54 seconds.
+  Gradient evaluation took 0.107967 seconds
+  1000 transitions using 10 leapfrog steps per transition would take 1079.67 seconds.
   Adjust your expectations accordingly!
   WARNING: There aren't enough warmup iterations to fit the
            three stages of adaptation as currently configured.
@@ -144,6 +116,16 @@ Messages received during sampling:
   Exception: normal_lpdf: Location parameter[1] is inf, but must be finite! (in '/tmp/httpstan_7xbe86ld/model_gn4xu2ns.stan', line 67, column 2 to column 42)
   If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
   but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Gradient evaluation took 0.106358 seconds
+  1000 transitions using 10 leapfrog steps per transition would take 1063.58 seconds.
+  Adjust your expectations accordingly!
+  WARNING: There aren't enough warmup iterations to fit the
+           three stages of adaptation as currently configured.
+           Reducing each adaptation stage to 15%/75%/10% of
+           the given number of warmup iterations:
+             init_buffer = 15
+             adapt_window = 75
+             term_buffer = 10
   Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
   Exception: normal_lpdf: Location parameter[1] is inf, but must be finite! (in '/tmp/httpstan_7xbe86ld/model_gn4xu2ns.stan', line 67, column 2 to column 42)
   If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
@@ -156,6 +138,54 @@ Messages received during sampling:
   Exception: normal_lpdf: Location parameter[1] is inf, but must be finite! (in '/tmp/httpstan_7xbe86ld/model_gn4xu2ns.stan', line 67, column 2 to column 42)
   If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
   but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: normal_lpdf: Location parameter[1] is inf, but must be finite! (in '/tmp/httpstan_7xbe86ld/model_gn4xu2ns.stan', line 67, column 2 to column 42)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: normal_lpdf: Location parameter[1] is inf, but must be finite! (in '/tmp/httpstan_7xbe86ld/model_gn4xu2ns.stan', line 67, column 2 to column 42)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: normal_lpdf: Location parameter[1] is inf, but must be finite! (in '/tmp/httpstan_7xbe86ld/model_gn4xu2ns.stan', line 67, column 2 to column 42)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Gradient evaluation took 0.105992 seconds
+  1000 transitions using 10 leapfrog steps per transition would take 1059.92 seconds.
+  Adjust your expectations accordingly!
+  WARNING: There aren't enough warmup iterations to fit the
+           three stages of adaptation as currently configured.
+           Reducing each adaptation stage to 15%/75%/10% of
+           the given number of warmup iterations:
+             init_buffer = 15
+             adapt_window = 75
+             term_buffer = 10
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: normal_lpdf: Location parameter[1] is inf, but must be finite! (in '/tmp/httpstan_7xbe86ld/model_gn4xu2ns.stan', line 67, column 2 to column 42)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: normal_lpdf: Location parameter[1] is inf, but must be finite! (in '/tmp/httpstan_7xbe86ld/model_gn4xu2ns.stan', line 67, column 2 to column 42)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: normal_lpdf: Location parameter[1] is inf, but must be finite! (in '/tmp/httpstan_7xbe86ld/model_gn4xu2ns.stan', line 67, column 2 to column 42)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: normal_lpdf: Location parameter[1] is inf, but must be finite! (in '/tmp/httpstan_7xbe86ld/model_gn4xu2ns.stan', line 67, column 2 to column 42)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Gradient evaluation took 0.107764 seconds
+  1000 transitions using 10 leapfrog steps per transition would take 1077.64 seconds.
+  Adjust your expectations accordingly!
+  WARNING: There aren't enough warmup iterations to fit the
+           three stages of adaptation as currently configured.
+           Reducing each adaptation stage to 15%/75%/10% of
+           the given number of warmup iterations:
+             init_buffer = 15
+             adapt_window = 75
+             term_buffer = 10
 /home/jose.ferreira/.micromamba/envs/fqgw/lib/python3.9/site-packages/pkg_resources/__init__.py:116: PkgResourcesDeprecationWarning: dev is an invalid version and will not be supported in a future release
   warnings.warn(
 Removed no burn in

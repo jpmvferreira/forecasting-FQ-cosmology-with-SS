@@ -1,7 +1,7 @@
 ## output.yml
 # backup of all the output arguments used for this specific run
 
-output: output/LCDM_BNS-1
+output: output/LCDM_BNS-5
 
 save-chain: true
 

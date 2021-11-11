@@ -3,7 +3,7 @@
 
 output: output/LCDM_BNS-2
 
-save-chain: false
+save-chain: true
 
 gzip: null
 

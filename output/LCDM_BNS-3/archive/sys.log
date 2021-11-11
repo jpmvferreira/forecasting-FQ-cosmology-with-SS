@@ -2,10 +2,10 @@
 # information regarding the system and the date in which this run was executed
 
 $ date
-Thu Nov 11 11:56:56 WET 2021
+Thu Nov 11 11:59:38 WET 2021
 
 $ uname -a
-Linux nonius2oal-0-11.local 2.6.32-504.8.1.el6_lustre.x86_64 #1 SMP Thu Feb 26 22:39:27 PST 2015 x86_64 x86_64 x86_64 GNU/Linux
+Linux nonius2oal-0-15.local 2.6.32-504.8.1.el6_lustre.x86_64 #1 SMP Thu Feb 26 22:39:27 PST 2015 x86_64 x86_64 x86_64 GNU/Linux
 
 $ lscpu
 Architecture:          x86_64
@@ -22,7 +22,7 @@ CPU family:            6
 Model:                 15
 Stepping:              7
 CPU MHz:               2666.664
-BogoMIPS:              5320.05
+BogoMIPS:              5320.04
 Virtualization:        VT-x
 L1d cache:             32K
 L1i cache:             32K

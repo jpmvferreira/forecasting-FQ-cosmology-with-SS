@@ -1,0 +1,231 @@
+/home/jose.ferreira/.micromamba/envs/fqgw/lib/python3.9/site-packages/pkg_resources/__init__.py:116: PkgResourcesDeprecationWarning: dev is an invalid version and will not be supported in a future release
+  warnings.warn(
+[*] Fetching arguments
+
+[*] Setting up the output folder
+
+[*] Importing the model
+
+[*] Importing input data
+
+[*] Running stan
+Building...
+
+Building: found in cache, done.Messages from stanc:
+Warning in '/tmp/httpstan_5oufcuap/model_6htxq3lm.stan', line 55, column 57: The variable integrand may not have been assigned a value before its use.
+Sampling:   0%
+Sampling:   0% (1/3000)
+Sampling:   0% (2/3000)
+Sampling:   0% (3/3000)
+Sampling:   0% (4/3000)
+Sampling:   0% (5/3000)
+Sampling:   3% (104/3000)
+Sampling:   4% (105/3000)
+Sampling:   7% (204/3000)
+Sampling:   7% (205/3000)
+Sampling:  10% (304/3000)
+Sampling:  10% (305/3000)
+Sampling:  13% (404/3000)
+Sampling:  14% (405/3000)
+Sampling:  17% (504/3000)
+Sampling:  17% (505/3000)
+Sampling:  20% (604/3000)
+Sampling:  23% (703/3000)
+Sampling:  27% (802/3000)
+Sampling:  30% (901/3000)
+Sampling:  33% (1000/3000)
+Sampling:  37% (1100/3000)
+Sampling:  40% (1200/3000)
+Sampling:  43% (1300/3000)
+Sampling:  47% (1400/3000)
+Sampling:  50% (1500/3000)
+Sampling:  53% (1600/3000)
+Sampling:  57% (1700/3000)
+Sampling:  60% (1800/3000)
+Sampling:  63% (1900/3000)
+Sampling:  67% (2000/3000)
+Sampling:  70% (2100/3000)
+Sampling:  73% (2200/3000)
+Sampling:  77% (2300/3000)
+Sampling:  80% (2400/3000)
+Sampling:  83% (2500/3000)
+Sampling:  87% (2600/3000)
+Sampling:  90% (2700/3000)
+Sampling:  93% (2800/3000)
+Sampling:  97% (2900/3000)
+Sampling: 100% (3000/3000)
+Sampling: 100% (3000/3000), done.
+Messages received during sampling:
+  Gradient evaluation took 0.289588 seconds
+  1000 transitions using 10 leapfrog steps per transition would take 2895.88 seconds.
+  Adjust your expectations accordingly!
+  WARNING: There aren't enough warmup iterations to fit the
+           three stages of adaptation as currently configured.
+           Reducing each adaptation stage to 15%/75%/10% of
+           the given number of warmup iterations:
+             init_buffer = 15
+             adapt_window = 75
+             term_buffer = 10
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: Error in function tanh_sinh<double>::integrate: The tanh_sinh quadrature evaluated your function at a singular point and got inf. Please narrow the bounds of integration or check your function for singularities. (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: Error in function tanh_sinh<double>::integrate: The tanh_sinh quadrature evaluated your function at a singular point and got inf. Please narrow the bounds of integration or check your function for singularities. (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: integrate: error estimate of integral 1.99192e+41 exceeds the given relative tolerance times norm of integral (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: integrate: error estimate of integral 1.46149e+08 exceeds the given relative tolerance times norm of integral (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: Error in function tanh_sinh<double>::integrate: The tanh_sinh quadrature evaluated your function at a singular point and got inf. Please narrow the bounds of integration or check your function for singularities. (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: Error in function tanh_sinh<double>::integrate: The tanh_sinh quadrature evaluated your function at a singular point and got inf. Please narrow the bounds of integration or check your function for singularities. (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: integrate: error estimate of integral 866.675 exceeds the given relative tolerance times norm of integral (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Gradient evaluation took 0.351591 seconds
+  1000 transitions using 10 leapfrog steps per transition would take 3515.91 seconds.
+  Adjust your expectations accordingly!
+  WARNING: There aren't enough warmup iterations to fit the
+           three stages of adaptation as currently configured.
+           Reducing each adaptation stage to 15%/75%/10% of
+           the given number of warmup iterations:
+             init_buffer = 15
+             adapt_window = 75
+             term_buffer = 10
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: Error in function tanh_sinh<double>::integrate: The tanh_sinh quadrature evaluated your function at a singular point and got nan. Please narrow the bounds of integration or check your function for singularities. (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: Error in function tanh_sinh<double>::integrate: The tanh_sinh quadrature evaluated your function at a singular point and got nan. Please narrow the bounds of integration or check your function for singularities. (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: Error in function tanh_sinh<double>::integrate: The tanh_sinh quadrature evaluated your function at a singular point and got nan. Please narrow the bounds of integration or check your function for singularities. (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: Error in function tanh_sinh<double>::integrate: The tanh_sinh quadrature evaluated your function at a singular point and got nan. Please narrow the bounds of integration or check your function for singularities. (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: Error in function tanh_sinh<double>::integrate: The tanh_sinh quadrature evaluated your function at a singular point and got inf. Please narrow the bounds of integration or check your function for singularities. (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: gradient_of_f: The gradient of f is nan for parameter 1 (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Gradient evaluation took 0.260111 seconds
+  1000 transitions using 10 leapfrog steps per transition would take 2601.11 seconds.
+  Adjust your expectations accordingly!
+  WARNING: There aren't enough warmup iterations to fit the
+           three stages of adaptation as currently configured.
+           Reducing each adaptation stage to 15%/75%/10% of
+           the given number of warmup iterations:
+             init_buffer = 15
+             adapt_window = 75
+             term_buffer = 10
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: integrate: error estimate of integral 5.20525e+43 exceeds the given relative tolerance times norm of integral (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: integrate: error estimate of integral 3.22184e+39 exceeds the given relative tolerance times norm of integral (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: integrate: error estimate of integral 1.52872e+08 exceeds the given relative tolerance times norm of integral (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: Error in function tanh_sinh<double>::integrate: The tanh_sinh quadrature evaluated your function at a singular point and got inf. Please narrow the bounds of integration or check your function for singularities. (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: Error in function tanh_sinh<double>::integrate: The tanh_sinh quadrature evaluated your function at a singular point and got inf. Please narrow the bounds of integration or check your function for singularities. (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Gradient evaluation took 0.266784 seconds
+  1000 transitions using 10 leapfrog steps per transition would take 2667.84 seconds.
+  Adjust your expectations accordingly!
+  WARNING: There aren't enough warmup iterations to fit the
+           three stages of adaptation as currently configured.
+           Reducing each adaptation stage to 15%/75%/10% of
+           the given number of warmup iterations:
+             init_buffer = 15
+             adapt_window = 75
+             term_buffer = 10
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: integrate: error estimate of integral 245.788 exceeds the given relative tolerance times norm of integral (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: integrate: error estimate of integral 1.62455e-07 exceeds the given relative tolerance times norm of integral (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: Error in function tanh_sinh<double>::integrate: The tanh_sinh quadrature evaluated your function at a singular point and got inf. Please narrow the bounds of integration or check your function for singularities. (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: integrate: error estimate of integral 8.26257e+07 exceeds the given relative tolerance times norm of integral (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Gradient evaluation took 0.265691 seconds
+  1000 transitions using 10 leapfrog steps per transition would take 2656.91 seconds.
+  Adjust your expectations accordingly!
+  WARNING: There aren't enough warmup iterations to fit the
+           three stages of adaptation as currently configured.
+           Reducing each adaptation stage to 15%/75%/10% of
+           the given number of warmup iterations:
+             init_buffer = 15
+             adapt_window = 75
+             term_buffer = 10
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: gradient_of_f: The gradient of f is nan for parameter 1 (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: gradient_of_f: The gradient of f is nan for parameter 1 (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: integrate: error estimate of integral 4.24036e+26 exceeds the given relative tolerance times norm of integral (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: integrate: error estimate of integral 5538.05 exceeds the given relative tolerance times norm of integral (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: Error in function tanh_sinh<double>::integrate: The tanh_sinh quadrature evaluated your function at a singular point and got inf. Please narrow the bounds of integration or check your function for singularities. (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: Error in function tanh_sinh<double>::integrate: The tanh_sinh quadrature evaluated your function at a singular point and got inf. Please narrow the bounds of integration or check your function for singularities. (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+  Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:
+  Exception: integrate: error estimate of integral 3.97675 exceeds the given relative tolerance times norm of integral (in '/tmp/httpstan_lceyu9i2/model_6htxq3lm.stan', line 55, column 4 to column 123)
+  If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,
+  but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.
+/home/jose.ferreira/.micromamba/envs/fqgw/lib/python3.9/site-packages/pkg_resources/__init__.py:116: PkgResourcesDeprecationWarning: dev is an invalid version and will not be supported in a future release
+  warnings.warn(
+Removed no burn in
+
+[*] Plotting routines
+
+[*] Saving information to output folder

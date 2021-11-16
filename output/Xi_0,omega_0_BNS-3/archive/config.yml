@@ -1,0 +1,32 @@
+## config.yml
+# backup of all the configuration arguments used for this specific run
+
+names:
+- h
+- Omega_m
+- omega_0
+- Xi_0
+
+labels:
+- h
+- \Omega_m
+- \omega_0
+- \Xi_0
+
+initial:
+  h: gauss(0.7, 0.15)
+  Omega_m: gauss(0.284, 0.1)
+  omega_0: gauss(-1, 0.5)
+  Xi_0: gauss(1, 0.1)
+
+markers:
+  h: 0.7
+  Omega_m: 0.284
+  omega_0: -1
+  Xi_0: 1
+
+samples: 500
+
+warmup: 100
+
+chains: 5

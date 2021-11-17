@@ -1,0 +1,13 @@
+## output.yml
+# backup of all the output arguments used for this specific run
+
+output: output/FQ_BNS-3_SNIa-binned_LIGO-3
+
+save-chain: true
+
+gzip: null
+
+lzf: false
+
+noshow: false
+

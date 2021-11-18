@@ -23,10 +23,8 @@ This virtual environment was created using [micromamba](https://mamba.readthedoc
 
 ### Dependencies
 The packages that were (explicitly) used are the following:
-- [cosmocatalog](https://github.com/jpmvferreira/cosmocatalog)
-- [ezmc](https://github.com/jpmvferreira/ezmc)
-
-If you don't want to fully replicate the virtual environment, then installing these two packages is enough.
+- [gwcatalog](https://github.com/jpmvferreira/gwcatalog)
+- [simplemc](https://github.com/jpmvferreira/simplemc)
 
 ### Replicate virtual environment
 To replicate the virtual environment start by cloning this repository locally:

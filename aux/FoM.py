@@ -49,11 +49,20 @@ for folder in input:
     file.close()
 
 for i in range(len(names)):
-    med = median(d[names[i]])
     print(f"list of areas of {names[i]}: {d[names[i]]}")
-    print(f"median area of {names[i]}: {med}")
-    folder = d[names[i]].index(med)
-    print(f"folder: {input[folder]}")
+
+    med = median(d[names[i]])
+    medfolder = d[names[i]].index(med)
+    print(f"median: {input[medfolder]}")
+
+    mini = min(d[names[i]])
+    minifolder = d[names[i]].index(mini)
+    print(f"best: {input[minifolder]}")
+
+    maxi = max(d[names[i]])
+    maxifolder = d[names[i]].index(maxi)
+    print(f"worst: {input[maxifolder]}")
+
     print()
 
 if plot:

@@ -1,0 +1,50 @@
+## LCDM.yml
+# smc-emcee configuration file for ΛCDM
+
+# The names of the parameters
+# Must match the names defined in the stan model file!
+names: [h, Omega_m]
+
+# The labels to show in the plots and tables, for each parameter.
+# Defaults to the name of each parameter if not provided.
+# Latex is supported.
+labels: [h, \Omega_m]
+
+# Initial condition for each parameter, for each walker.
+# Must be inside the model restrictions, otherwise it might crash.
+# The most relevant initial conditions implemented in this program are:
+# - gauss(mu, sigma)
+# - uniform(a, b)
+# - float(a)
+initial:
+  h: gauss(0.7, 0.15)
+  Omega_m: gauss(0.284, 0.05)
+
+# Line markers to show rendered in the plots.
+# These are optional and can be used to represent the true or expected values.
+markers:
+  h: 0.7
+  Omega_m: 0.284
+
+# Autocorreation time must change less than this percentage to consider convergence.
+percentage: 5
+
+# Number of steps to sample the posterior distribution, after the convergence is met.
+samples: 75000
+
+# Number of steps to check if convergence is met.
+# Defaults to 1000 steps.
+check: 5000
+
+# Maximum number of steps to compute, regardless if the chain has converged or not.
+# Must be larger than the number of steps to compute.
+# Defaults to 100.000 steps.
+maxsteps: 250000
+
+# The number of walkers to sample the likelihood.
+# Defaults to 32 walkers.
+walkers: 16
+
+# The number of processes to spawn to make use of multi core processors.
+# Defaults to all available hardware threads.
+processes: 4

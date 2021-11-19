@@ -26,8 +26,10 @@ The packages that were (explicitly) used are the following:
 - [gwcatalog](https://github.com/jpmvferreira/gwcatalog)
 - [simplemc](https://github.com/jpmvferreira/simplemc)
 
+Being the first used to generate and plot the catalogs for LISA, ET and LIGO, and the second a wrapper tool around [PyStan](https://pystan.readthedocs.io/en/latest/), which by itself wraps around [Stan](https://mc-stan.org/), to implement the MCMC methods and analyze the output.
+
 ### Replicate virtual environment
-To replicate the virtual environment start by cloning this repository locally:
+To have an exact copy of the virtual environment used, start by cloning this repository locally:
 ```console
 $ git clone https://github.com/jpmvferreira/forecasting-viable-FQ-cosmology-with-GW fqgw
 ```

@@ -1,5 +1,5 @@
-# FQ_MBHB_SNIa_BNS.py
-# implementation of a simple cosmological model based on f(Q) geometry using MBHBs and SNIa
+# FQ_GW_SNIa.py
+# implementation of a simple cosmological model based on f(Q) geometry using GW data and SNIa
 
 
 # imports
@@ -13,7 +13,7 @@ def ln_likelihood(θ, redshifts, distances, errors, candleredshifts, candlemagni
     h, Ωm, M = θ
     sum = 0
 
-    # likelihood for the MBHB
+    # likelihood for the GW data
     N = len(redshifts)
     for i in range(0, N):
         # eletromagnetic luminosity distance
@@ -31,7 +31,7 @@ def ln_likelihood(θ, redshifts, distances, errors, candleredshifts, candlemagni
 
     sum += -(N/2)*log(2*pi)
 
-    # likelihood for the SNe
+    # likelihood for the SNIa
     N = len(candleredshifts)
     A = 0
     B = 0
@@ -58,7 +58,7 @@ def ln_prior(θ):
     h, Ωm, M = θ
 
     # flat priors
-    if 0.2 < h < 1.2 and 0 < Ωm < 1 and -4.5 < M < 10:
+    if 0.2 < h < 1.2 and 0 < Ωm < 1 and −4.89897948556635619639 < M < 10:
         return 0.0
 
     return -np.inf

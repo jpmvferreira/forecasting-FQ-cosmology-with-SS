@@ -1,5 +1,5 @@
-# FQ_MBHB.py
-# implementation of a simple cosmological model based on f(Q) geometry using MBHBs
+# FQ_GW.py
+# implementation of a simple cosmological model based on f(Q) geometry using GW data
 
 
 # imports
@@ -36,7 +36,7 @@ def ln_prior(θ):
     h, Ωm, M = θ
 
     # flat priors
-    if -4.5 < M < 10 and 0.2 < h < 1.2 and 0 < Ωm < 1:
+    if −4.89897948556635619639 < M < 10 and 0.2 < h < 1.2 and 0 < Ωm < 1:
         return 0.0
 
     return -np.inf

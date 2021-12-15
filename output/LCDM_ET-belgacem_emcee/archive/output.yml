@@ -1,0 +1,23 @@
+## output.yml
+# backup of all the output arguments used for this specific run
+
+output: output/LCDM_ET-belgacem_emcee
+
+save-chain: false
+
+gzip: null
+
+lzf: false
+
+tmp: false
+
+shm: false
+
+thin: null
+
+timeseries: false
+
+noshow: true
+
+noprogress: false
+

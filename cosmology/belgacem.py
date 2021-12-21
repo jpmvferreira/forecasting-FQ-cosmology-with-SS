@@ -9,7 +9,7 @@ from scipy.integrate import quad
 # Hubble function
 def H(z):
     # Hubble constant
-    H0 = 70
+    H0 = 67.64
     H0 = H0*3.240779289*10**(-20)
 
     # value for Ωm

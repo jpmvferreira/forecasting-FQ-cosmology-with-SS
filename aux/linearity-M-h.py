@@ -1,3 +1,4 @@
+from scipy.stats import linregress
 import matplotlib.pyplot as plt
 import os
 
@@ -11,6 +12,8 @@ l = [LISA_others, LISA_worst, LISA_median, LISA_best, ET]
 colors = ["grey", "red", "yellow", "green", "blue"]
 labels = ["LISA (others)", "LISA (worst)", "LISA (median)", "LISA (best)", "ET"]
 
+h = []
+M = []
 for i in range (0, len(l)):
     folders = l[i]
     color = colors[i]
@@ -47,8 +50,15 @@ for i in range (0, len(l)):
 
         file.close()
 
-    plt.scatter(d["h"], d["M"], color=color, label=label)
+    h.extend(d["h"])
+    M.extend(d["M"])
+    plt.scatter(d["h"], d["M"], color=color, label=label, zorder=3.5)
 
+
+res = linregress(h, y=M)
+print(f"R-squared: {res.rvalue**2:.6f}")
+print(f"m = {res.slope}, b = {res.intercept}")
+plt.plot(h, [res.slope*i + res.intercept for i in h], color="purple", linestyle="-", label="linear regression", alpha = 0.25)
 plt.xlabel("Δh")
 plt.ylabel("ΔM")
 plt.grid(alpha=0.5)

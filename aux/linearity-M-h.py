@@ -1,30 +1,46 @@
+## TO-DO:
+# - meter incertezas no m e no b
+
 from scipy.stats import linregress
 import matplotlib.pyplot as plt
+from matplotlib.patches import Patch
+from matplotlib.lines import Line2D
 import os
 
-LISA_others = ["FQ_LISA-1_SNIa-binned", "FQ_LISA-2_SNIa-binned", "FQ_LISA-3_SNIa-binned", "FQ_LISA-4_SNIa-binned", "FQ_LISA-5_SNIa-binned", "FQ_LISA-6_SNIa-binned", "FQ_LISA-7_SNIa-binned", "FQ_LISA-8_SNIa-binned", "FQ_LISA-11_SNIa-binned", "FQ_LISA-13_SNIa-binned", "FQ_LISA-14_SNIa-binned", "FQ_LISA-15_SNIa-binned"]
-LISA_worst = ["FQ_LISA-12_SNIa-binned"]
-LISA_median = ["FQ_LISA-10_SNIa-binned"]
-LISA_best = ["FQ_LISA-9_SNIa-binned"]
-ET = ["FQ_ET-1_SNIa-binned", "FQ_ET-2_SNIa-binned", "FQ_ET-2_SNIa-binned", "FQ_ET-4_SNIa-binned", "FQ_ET-5_SNIa-binned"]
-l = [LISA_others, LISA_worst, LISA_median, LISA_best, ET]
+l = [["FQ_LISA-12_SNIa-binned", "FQ_LISA-10_SNIa-binned", "FQ_LISA-9_SNIa-binned"],
+    ["FQ_ET-4_SNIa-binned"],
+    ["FQ_LISA-12_SNIa-binned_LIGO-2", "FQ_LISA-12_SNIa-binned_LIGO-1", "FQ_LISA-12_SNIa-binned_LIGO-13"]]
 
-colors = ["grey", "red", "yellow", "green", "blue"]
-labels = ["LISA (others)", "LISA (worst)", "LISA (median)", "LISA (best)", "ET"]
+c = [["#8080ff", "#0000ff", "#000080"],
+    ["red"],
+    ["#80ff80", "#00ff00", "#008000"]]
+
+labels = ["LISA", "ET", "LIGO"]
+markers = ["o", "s", "P"]
+
+legend_elements = []
+for i in range(0, len(labels)):
+    label = labels[i]
+    marker = markers[i]
+    legend_elements.append(Line2D([0], [0], marker=marker, color='w', label=label, markerfacecolor='black'))
 
 h = []
 M = []
-for i in range (0, len(l)):
-    folders = l[i]
-    color = colors[i]
+for i in range(0, len(l)):
+    observatory =  l[i]
+    colors = c[i]
     label = labels[i]
+    marker = markers[i]
 
-    names = ["h", "Omega_m", "M"]
-    d = {}
-    for name in names:
-        d[name] = []
+    for j in range (0, len(observatory)):
+        folder = observatory[j]
+        color = colors[j]
 
-    for folder in folders:
+        names = ["h", "Omega_m", "M"]
+        d = {}
+        for name in names:
+            d[name] = []
+
         file = open(f"output/{folder}/CIs.tex", "r")
 
         content = file.read()
@@ -33,34 +49,34 @@ for i in range (0, len(l)):
         sigma1 = sigma1.split("\n")[3:-2]
         sigma2 = sigma2.split("\n")[3:-3]
 
-        for i in range(len(names)):
-            if "\pm" in sigma2[i]:
-                value, sigma = sigma2[i].replace(" ", "").replace("$", " ").replace("\pm", " ").split(" ")[3:5]
+        for k in range(len(names)):
+            if "\pm" in sigma2[k]:
+                value, sigma = sigma2[k].replace(" ", "").replace("$", " ").replace("\pm", " ").split(" ")[3:5]
                 value = float(value)
                 sigma = float(sigma)
                 area = round(2*sigma, 3)
             else:
-                value, sigmalow, sigmahigh = sigma2[i].replace(" ", "").replace("$", " ").replace("^{+", " ").replace("}_{-", " ").replace("}", "").split(" ")[3:6]
+                value, sigmalow, sigmahigh = sigma2[k].replace(" ", "").replace("$", " ").replace("^{+", " ").replace("}_{-", " ").replace("}", "").split(" ")[3:6]
                 value = float(value)
                 sigmalow = float(sigmalow)
                 sigmahigh = float(sigmahigh)
                 area = round(sigmalow + sigmahigh, 3)
 
-            d[names[i]].append(area)
+            d[names[k]].append(area)
 
         file.close()
 
-    h.extend(d["h"])
-    M.extend(d["M"])
-    plt.scatter(d["h"], d["M"], color=color, label=label, zorder=3.5)
+        h.extend(d["h"])
+        M.extend(d["M"])
+        plt.scatter(d["h"], d["M"], color=color, zorder=3.5, label=label, marker=marker)
 
 
 res = linregress(h, y=M)
 print(f"R² = {res.rvalue**2:.6f}")
 print(f"m = {res.slope}, b = {res.intercept}")
-plt.plot(h, [res.slope*i + res.intercept for i in h], color="purple", linestyle="-", label=f"m = {round(res.slope, 2)}, b = {round(res.intercept, 2)}", alpha = 0.25)
+plt.plot(h, [res.slope*i + res.intercept for i in h], color="black", linestyle="-", alpha = 0.25)
 plt.xlabel("Δh")
 plt.ylabel("ΔM")
 plt.grid(alpha=0.5)
-plt.legend()
+plt.legend(handles=legend_elements)
 plt.show()

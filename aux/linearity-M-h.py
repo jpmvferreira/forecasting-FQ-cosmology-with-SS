@@ -56,9 +56,9 @@ for i in range (0, len(l)):
 
 
 res = linregress(h, y=M)
-print(f"R-squared: {res.rvalue**2:.6f}")
+print(f"R² = {res.rvalue**2:.6f}")
 print(f"m = {res.slope}, b = {res.intercept}")
-plt.plot(h, [res.slope*i + res.intercept for i in h], color="purple", linestyle="-", label="linear regression", alpha = 0.25)
+plt.plot(h, [res.slope*i + res.intercept for i in h], color="purple", linestyle="-", label=f"m = {round(res.slope, 2)}, b = {round(res.intercept, 2)}", alpha = 0.25)
 plt.xlabel("Δh")
 plt.ylabel("ΔM")
 plt.grid(alpha=0.5)

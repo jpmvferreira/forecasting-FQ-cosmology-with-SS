@@ -38,19 +38,22 @@ def fmax(M, z, dL, σ):
     return (2*6**0.5 + M)/(2*6**0.5 + M/E(z)) - (1 + σ/dL)**2
 
 # LISA
-# redshifts = [i/100 for i in range(10, 901)]
-# redshifts, distances, errors = gwc.LISA(population="No Delay", redshifts=redshifts, ideal=True)
-# events = [0.1, 0.57, 2, 4, 6, 9]
+redshifts = [i/100 for i in range(10, 901)]
+redshifts, distances, errors = gwc.LISA(population="No Delay", redshifts=redshifts, ideal=True)
+events = [0.57]
+label = "LISA"
 
 # ET
-redshifts = [i/100 for i in range(7, 201)]
-redshifts, distances, errors = gwc.ET(redshifts=redshifts, ideal=True)
-events = [0.07, 0.93, 1, 2]
+# redshifts = [i/100 for i in range(7, 201)]
+# redshifts, distances, errors = gwc.ET(redshifts=redshifts, ideal=True)
+# events = [0.93]
+# label = "ET"
 
 # LIGO (diverges! do not use!)
 # redshifts = [i/100 for i in range(1, 20)]
 # redshifts, distances, errors = gwc.LIGO(redshifts=redshifts, ideal=True)
 # events = [0.01, 0.2]
+# label = "LIGO"
 
 # numerically solve to obtain the maximum and minimum value of M for each event
 deltas = []
@@ -78,9 +81,10 @@ for i in range(0, len(deltas)):
         break
 
 # plot ΔM vs z
-plt.scatter(redshifts, deltas, marker=".", zorder=3.4)
-plt.scatter(redshiftmini, mini, marker="x", color="red", zorder=3.5)
-plt.grid()
+plt.scatter(redshifts, deltas, marker=".", zorder=3.4, label=label)
+plt.scatter(redshiftmini, mini, marker="x", color="red", zorder=3.5, label=f"z = {redshiftmini}, ΔM = {round(mini, 2)}")
+plt.legend()
+plt.grid(alpha=0.5)
 plt.xlabel("z")
 plt.ylabel("ΔM")
 plt.show()
@@ -92,13 +96,13 @@ for i in [int((z-redshifts[0])*100) for z in events]:
     [bar.set_alpha(0.75) for bar in bars]
     [cap.set_alpha(0.75) for cap in caps]
 
-    # line = np.linspace(0, 9, 1000)  # LISA
-    # plt.xlim([-0.45, 9.45])         # .
-    # plt.ylim([-4.5, 115])           # .
+    line = np.linspace(0, 9, 1000)  # LISA
+    plt.xlim([-0.45, 9.45])         # .
+    plt.ylim([-4.5, 115])           # .
 
-    line = np.linspace(0, 2, 1000)  # ET
-    plt.xlim([-0.045, 2.045])       # .
-    plt.ylim([-0.45, 20.5])         # .
+    # line = np.linspace(0, 2, 1000)  # ET
+    # plt.xlim([-0.045, 2.045])       # .
+    # plt.ylim([-0.45, 20.5])         # .
 
     # line = np.linspace(0, 0.2, 1000)  # LIGO
     # plt.xlim([-0.005, 0.205])         # .
@@ -111,8 +115,9 @@ for i in [int((z-redshifts[0])*100) for z in events]:
     plt.grid()
     plt.xlabel("z")
     plt.ylabel("$d_L(z)$")
-    plt.plot(line, dLline, label="$\Lambda$CDM", color="black", zorder=2.5, alpha=0.75)
-    plt.plot(line, dLgwmax, label="$M_{max}$", color="red", zorder=2.5, alpha=0.50)
-    plt.plot(line, dLgwmin, label="$M_{min}$", color="red", zorder=2.5, alpha=0.50)
+    plt.plot(line, dLline, label="$d_L(z)$", color="black", zorder=2.5, alpha=0.75)
+    plt.plot(line, dLgwmax, label="$D^{(max)}_L(z)$", color="red", zorder=2.5, alpha=0.50)
+    plt.plot(line, dLgwmin, label="$D^{(min)}_L(z)$", color="red", zorder=2.5, alpha=0.50)
+    plt.legend()
     plt.show()
     plt.close()

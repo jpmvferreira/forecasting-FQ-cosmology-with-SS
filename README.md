@@ -73,7 +73,6 @@ If you used any of the contents available in this repository, or found it useful
   doi = {10.48550/ARXIV.2203.13788},
   url = {https://arxiv.org/abs/2203.13788},
   author = {Ferreira, Jos\'e and Barreiro, Tiago and Mimoso, Jos\'e and Nunes, Nelson J.},
-  keywords = {Cosmology and Nongalactic Astrophysics (astro-ph.CO), General Relativity and Quantum Cosmology (gr-qc), FOS: Physical sciences, FOS: Physical sciences},
   title = {Forecasting F(Q) cosmology with $\Lambda$CDM background using standard sirens},
   publisher = {arXiv},
   year = {2022},

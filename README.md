@@ -1,5 +1,7 @@
 ## About
-Source code for [arXiv:2203.13788](https://arxiv.org/abs/2203.13788): Forecasting F(Q) cosmology with ΛCDM background using standard sirens.
+Source code for the article "Forecasting F(Q) cosmology with ΛCDM background using standard sirens".
+
+Available under an APS subscription at [PhysRevD.105.123531](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.105.123531) and for free at [arXiv:2203.13788](https://arxiv.org/abs/2203.13788) (both include the same version of the document)
 
 
 ## Table of contents
@@ -69,13 +71,19 @@ $ pip install -r fqgw/venv/requirements.txt
 ## Citation
 If you used any of the contents available in this repository, or found it useful in any way, you can cite it using the following BibTeX entry:
 ```
-@misc{Ferreira2022,
-  doi = {10.48550/ARXIV.2203.13788},
-  url = {https://arxiv.org/abs/2203.13788},
+@article{PhysRevD.105.123531,
+  title = {Forecasting $F(Q)$ cosmology with $\mathrm{\ensuremath{\Lambda}}\mathrm{CDM}$ background using standard sirens},
   author = {Ferreira, Jos\'e and Barreiro, Tiago and Mimoso, Jos\'e and Nunes, Nelson J.},
-  title = {Forecasting F(Q) cosmology with $\Lambda$CDM background using standard sirens},
-  publisher = {arXiv},
+  journal = {Phys. Rev. D},
+  volume = {105},
+  issue = {12},
+  pages = {123531},
+  numpages = {10},
   year = {2022},
+  month = {Jun},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevD.105.123531},
+  url = {https://link.aps.org/doi/10.1103/PhysRevD.105.123531}
 }
 ```
 

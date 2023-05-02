@@ -1,0 +1,13 @@
+## output.yml
+# backup of all the output arguments used for this specific run
+
+output: output-stan/FQ_MBHB-8_SNIa-binned
+
+save-chain: true
+
+gzip: null
+
+lzf: false
+
+noshow: false
+

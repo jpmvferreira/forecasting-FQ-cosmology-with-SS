@@ -1,0 +1,6 @@
+# redshift: Graham et al. (2020) [arXiv:2006.14122]
+# luminosity distance: LIGO Scientific Collaboration and Virgo Collaboration [2009.01190] (modified to have a symmetric error)
+
+# units: none, Gpc, Gpc
+redshift,luminosity_distance,error
+0.438,5.2,2.5

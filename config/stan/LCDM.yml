@@ -1,0 +1,39 @@
+## LCDM.yml
+# smc-stan configuration file for LCDM model
+
+# The names of the parameters
+# Must match the names defined in the stan model file!
+names: [h, Omega_m]
+
+# The labels to show in the plots and tables, for each parameter.
+# Defaults to the name of each parameter if not provided.
+# Latex is supported.
+labels: [h, \Omega_m]
+
+# Initial condition for each parameter, for each walker.
+# Must be inside the model restrictions, otherwise it might crash.
+# The most relevant initial conditions implemented in this program are:
+# - gauss(mu, sigma)
+# - uniform(a, b)
+# - float(a)
+initial:
+  h: gauss(0.7, 0.15)
+  Omega_m: gauss(0.284, 0.1)
+
+# Line markers to show rendered in the plots.
+# These are optional and can be used to represent the true or expected values.
+markers:
+  h: 0.7
+  Omega_m: 0.284
+
+# Number of steps to sample the posterior distribution, after the warmup.
+samples: 2500
+
+# Number of steps to warmup each chain, which will be discarded.
+warmup: 500
+
+# Number of chains to run.
+# Defaults to all available hardware threads.
+# Will run in parallel or sequentially based on the number of available threads.
+# Keep in mind that each chain will do a total number of steps = warmup + samples.
+chains: 4

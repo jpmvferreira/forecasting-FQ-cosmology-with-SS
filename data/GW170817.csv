@@ -1,0 +1,6 @@
+# redshift: NGC 4993 on https://ned.ipac.caltech.edu/ (ignoring the redshift error)
+# luminosity distance: Abbot et al. (2017) [arXiv:1710.05832] (centered to have a symmetric error value)
+
+# units: none, Gpc, Gpc
+redshift,luminosity_distance,error
+0.00973,0.037,0.011

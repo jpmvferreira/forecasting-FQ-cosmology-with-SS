@@ -1,0 +1,13 @@
+## output.yml
+# backup of all the output arguments used for this specific run
+
+output: output/LCDM_ET-very-high-2
+
+save-chain: true
+
+gzip: null
+
+lzf: false
+
+noshow: false
+

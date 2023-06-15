@@ -1,7 +1,6 @@
 # personal files
 /*.ze
 /misc
-/papers
 
 # slurm related files
 /log-slurm

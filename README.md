@@ -9,7 +9,6 @@ Available under an APS subscription at [PhysRevD.105.123531](https://journals.ap
 - [Virtual environment](#virtual-environment)
   - [Dependencies](#dependencies)
   - [Replicate virtual environment](#replicating-the-virtual-environment)
-- [Reproducing the results](#reproducing-the-results)
 - [Citation](#citation)
 - [Feedback](#feedback)
 - [License](#license)

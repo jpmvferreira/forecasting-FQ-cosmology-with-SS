@@ -49,7 +49,7 @@ If you don't wish to fully replicate the virtual environment, then installing th
 ### Replicating the virtual environment
 Start by cloning this repository locally using `git` to a folder named "fqgw":
 ```console
-$ git clone https://github.com/jpmvferreira/forecasting-viable-FQ-cosmology-with-GW fqgw
+$ git clone https://github.com/jpmvferreira/forecasting-FQ-cosmology-with-SS fqgw
 ```
 
 Use `conda` (or any other compatible package manager) to create a new virtual environment from the file `fqgw/venv/environment.yml`, which we will call "fqgw":

@@ -15,14 +15,14 @@ Available under an APS subscription at [PhysRevD.105.123531](https://journals.ap
 
 
 ## Repository outline
-`/analyzed`: Includes catalog and corner plots, which are analyzed by `simplemc`.
-`/aux`: A set of auxiliary scripts to aid in analysis or automation, which can be easily ignored by an external user.
-`/config`: The configuration files location used by the `simplemc` samplers.
-`/cosmology`: Custom cosmological models to be used by `gwcatalog` when generating standard sirens mock catalogs. Can be ignored by an external user.
-`/data`: All of the datasets used throughout our analysis, either real or generated.
-`/model`: The cosmological models to be constrained using `simplemc`.
-`/output`: The output of the MCMC performed by `simplemc`.
-`/venv`: Files related to the virtual environment used to develop our analysis.
+- `/analyzed`: Includes catalog and corner plots, which are analyzed by `simplemc`.
+- `/aux`: A set of auxiliary scripts to aid in analysis or automation, which can be easily ignored by an external user.
+- `/config`: The configuration files location used by the `simplemc` samplers.
+- `/cosmology`: Custom cosmological models to be used by `gwcatalog` when generating standard sirens mock catalogs. Can be ignored by an external user.
+- `/data`: All of the datasets used throughout our analysis, either real or generated.
+- `/model`: The cosmological models to be constrained using `simplemc`.
+- `/output`: The output of the MCMC performed by `simplemc`.
+- `/venv`: Files related to the virtual environment used to develop our analysis.
 
 The corresponding file to each of the catalogs used are:
 - ET: `data/ET-4.csv`
